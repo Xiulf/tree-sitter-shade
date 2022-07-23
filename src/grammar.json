@@ -776,7 +776,7 @@
           "name": "class",
           "content": {
             "type": "SYMBOL",
-            "name": "ty_path"
+            "name": "_ty_path"
           }
         },
         {
@@ -946,7 +946,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "ty_path"
+          "name": "_ty_path"
         }
       ]
     },
@@ -955,7 +955,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "_pat_ident"
         }
       ]
     },
@@ -1327,6 +1327,24 @@
         }
       ]
     },
+    "_ty_path": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "path"
+      },
+      "named": true,
+      "value": "ty_path"
+    },
+    "_pat_ident": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier"
+      },
+      "named": true,
+      "value": "pat_identifier"
+    },
     "operator": {
       "type": "PATTERN",
       "value": "[+=*&^%$#@!~/?><.,\\\\|-]+"
@@ -1382,10 +1400,6 @@
           }
         }
       ]
-    },
-    "ty_path": {
-      "type": "SYMBOL",
-      "name": "path"
     },
     "identifier": {
       "type": "PATTERN",

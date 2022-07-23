@@ -2,12 +2,19 @@
 (type name: (identifier) @type)
 (class name: (identifier) @type)
 (ctor name: (identifier) @constructor)
+(typevar (identifier) @variable)
+(pat_identifier @variable.parameter)
 
-(path last: (identifier) @function)
-(ty_path last: (identifier) @type)
+(expr_app first: (path last: (identifier) @function))
+
+((ty_path last: (identifier) @type)
+  (#match? @type "^[A-Z]"))
+((ty_path last: (identifier) @identifier)
+  (#match? @identifier "^[_a-z]"))
 
 (attribute) @attribute
 (operator) @operator
+(symbol) @operator
 (comment) @comment
 (identifier) @identifier
 
