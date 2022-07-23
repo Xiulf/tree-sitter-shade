@@ -609,10 +609,21 @@
   {
     "type": "path",
     "named": true,
-    "fields": {},
+    "fields": {
+      "last": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "identifier",

@@ -282,26 +282,26 @@ module.exports = grammar({
       $.string_literal,
     ),
     
-    int_literal: $ => choice(
+    int_literal: _ => choice(
       /[0-9][0-9_]*/,
       /0x[0-9a-fA-F_]+/,
       /0b[01_]+/,
     ),
     
-    string_literal: $ => seq(
+    string_literal: _ => seq(
       '"',
       repeat(/[^"]/),
       token.immediate('"'),
     ),
     
-    operator: $ => /[+=*&^%$#@!~/?><.,\\|-]+/,
+    operator: _ => /[+=*&^%$#@!~/?><.,\\|-]+/,
     symbol: $ => seq('(', $.operator, token.immediate(')')),
     
-    path: $ => sepBy1('/', $.identifier),
-    identifier: $ => /[_\p{XID_Start}][_\p{XID_Continue}]*'*/,
-    comment: $ => token(seq(';', /.*/)),
+    path: $ => seq(repeat(seq($.identifier, token.immediate('/'))), field('last', $.identifier)),
+    identifier: _ => /[_\p{XID_Start}][_\p{XID_Continue}]*'*/,
+    comment: _ => token(seq(';', /.*/)),
     
-    recur: $ => 'recur',
+    recur: _ => 'recur',
   }
 });
 

@@ -3,7 +3,8 @@
 (class name: (identifier) @type)
 (ctor name: (identifier) @constructor)
 
-(expr_app first: (path) @function)
+(expr_app first: (path last: (identifier) @function))
+(ty_app first: (path last: (identifier) @type))
 
 (attribute) @attribute
 (operator) @operator
@@ -18,6 +19,7 @@
 "infixr" @keyword
 "postfix" @keyword
 "as" @keyword
+"foreign" @keyword
 "type" @keyword
 "fn" @keyword
 "class" @keyword
