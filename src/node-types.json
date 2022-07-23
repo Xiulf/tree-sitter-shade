@@ -93,7 +93,34 @@
   {
     "type": "expr_app",
     "named": true,
-    "fields": {},
+    "fields": {
+      "first": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr_parens",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "path",
+            "named": true
+          },
+          {
+            "type": "recur",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -552,10 +579,21 @@
   {
     "type": "module",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "path",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "attribute",
@@ -563,10 +601,6 @@
         },
         {
           "type": "item",
-          "named": true
-        },
-        {
-          "type": "path",
           "named": true
         }
       ]
@@ -684,7 +718,34 @@
   {
     "type": "ty_app",
     "named": true,
-    "fields": {},
+    "fields": {
+      "first": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "path",
+            "named": true
+          },
+          {
+            "type": "ty_app",
+            "named": true
+          },
+          {
+            "type": "ty_infix",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,

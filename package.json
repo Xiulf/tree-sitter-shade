@@ -15,5 +15,14 @@
   },
   "scripts": {
     "test": "tree-sitter test"
-  }
+  },
+  
+  "tree-sitter": [
+    {
+      "scope": "source.shade",
+      "file-types": [
+        "shade"
+      ]
+    }
+  ]
 }

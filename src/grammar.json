@@ -120,8 +120,12 @@
           "value": "module"
         },
         {
-          "type": "SYMBOL",
-          "name": "path"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "path"
+          }
         },
         {
           "type": "STRING",
@@ -861,8 +865,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_ty_atom"
+          "type": "FIELD",
+          "name": "first",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_ty_atom"
+          }
         },
         {
           "type": "REPEAT1",
@@ -1001,8 +1009,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_expr_atom"
+          "type": "FIELD",
+          "name": "first",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expr_atom"
+          }
         },
         {
           "type": "REPEAT1",
