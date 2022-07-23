@@ -182,7 +182,7 @@ module.exports = grammar({
       'member',
       repeat1($._ty_atom),
       'of',
-      field('class', $.path),
+      field('class', $.ty_path),
       optional(seq(
         '=',
         layout($, $.func),
@@ -204,7 +204,7 @@ module.exports = grammar({
     
     _ty_atom: $ => choice(
       seq('(', $._ty, ')'),
-      $.path,
+      $.ty_path,
     ),
     
     _pat_atom: $ => choice(
@@ -298,6 +298,8 @@ module.exports = grammar({
     symbol: $ => seq('(', $.operator, token.immediate(')')),
     
     path: $ => seq(repeat(seq($.identifier, token.immediate('/'))), field('last', $.identifier)),
+    ty_path: $ => $.path,
+
     identifier: _ => /[_\p{XID_Start}][_\p{XID_Continue}]*'*/,
     comment: _ => token(seq(';', /.*/)),
     

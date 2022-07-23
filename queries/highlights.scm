@@ -3,8 +3,8 @@
 (class name: (identifier) @type)
 (ctor name: (identifier) @constructor)
 
-(expr_app first: (path last: (identifier) @function))
-(ty_app first: (path last: (identifier) @type))
+(path last: (identifier) @function)
+(ty_path last: (identifier) @type)
 
 (attribute) @attribute
 (operator) @operator

@@ -776,7 +776,7 @@
           "name": "class",
           "content": {
             "type": "SYMBOL",
-            "name": "path"
+            "name": "ty_path"
           }
         },
         {
@@ -946,7 +946,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "path"
+          "name": "ty_path"
         }
       ]
     },
@@ -1382,6 +1382,10 @@
           }
         }
       ]
+    },
+    "ty_path": {
+      "type": "SYMBOL",
+      "name": "path"
     },
     "identifier": {
       "type": "PATTERN",

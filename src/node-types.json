@@ -76,15 +76,15 @@
       "required": false,
       "types": [
         {
-          "type": "path",
-          "named": true
-        },
-        {
           "type": "ty_app",
           "named": true
         },
         {
           "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_path",
           "named": true
         }
       ]
@@ -450,15 +450,15 @@
           "named": true
         },
         {
-          "type": "path",
-          "named": true
-        },
-        {
           "type": "ty_app",
           "named": true
         },
         {
           "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_path",
           "named": true
         }
       ]
@@ -547,7 +547,7 @@
         "required": true,
         "types": [
           {
-            "type": "path",
+            "type": "ty_path",
             "named": true
           }
         ]
@@ -562,15 +562,15 @@
           "named": true
         },
         {
-          "type": "path",
-          "named": true
-        },
-        {
           "type": "ty_app",
           "named": true
         },
         {
           "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_path",
           "named": true
         }
       ]
@@ -743,15 +743,15 @@
             "named": false
           },
           {
-            "type": "path",
-            "named": true
-          },
-          {
             "type": "ty_app",
             "named": true
           },
           {
             "type": "ty_infix",
+            "named": true
+          },
+          {
+            "type": "ty_path",
             "named": true
           }
         ]
@@ -762,15 +762,15 @@
       "required": true,
       "types": [
         {
-          "type": "path",
-          "named": true
-        },
-        {
           "type": "ty_app",
           "named": true
         },
         {
           "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_path",
           "named": true
         }
       ]
@@ -789,15 +789,30 @@
           "named": true
         },
         {
-          "type": "path",
-          "named": true
-        },
-        {
           "type": "ty_app",
           "named": true
         },
         {
           "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ty_path",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path",
           "named": true
         }
       ]
@@ -827,15 +842,15 @@
           "named": true
         },
         {
-          "type": "path",
-          "named": true
-        },
-        {
           "type": "ty_app",
           "named": true
         },
         {
           "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_path",
           "named": true
         },
         {
@@ -858,15 +873,15 @@
           "named": true
         },
         {
-          "type": "path",
-          "named": true
-        },
-        {
           "type": "ty_app",
           "named": true
         },
         {
           "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_path",
           "named": true
         }
       ]
