@@ -1,13 +1,16 @@
-(func name: (identifer) @function)
-(type name: (identifer) @type)
-(class name: (identifer) @type)
-(ctor name: (identifer) @constructor)
+(func name: (identifier) @function)
+(type name: (identifier) @type)
+(class name: (identifier) @type)
+(ctor name: (identifier) @constructor)
+
+(expr_app first: (path) @function)
 
 (attribute) @attribute
 (operator) @operator
 (comment) @comment
 (identifier) @identifier
 
+"module" @keyword
 "import" @keyword
 "prefix" @keyword
 "infix" @keyword

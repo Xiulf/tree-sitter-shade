@@ -47,7 +47,7 @@ module.exports = grammar({
     module: $ => seq(
       repeat($.attribute),
       'module',
-      $.path,
+      field('name', $.path),
       '=',
       layout($, $.item),
     ),
@@ -195,7 +195,7 @@ module.exports = grammar({
       $._ty_atom,
     ),
     
-    ty_app: $ => seq($._ty_atom, repeat1($._ty_atom)),
+    ty_app: $ => seq(field('first', $._ty_atom), repeat1($._ty_atom)),
     
     ty_infix: $ => sepBy2(
       $.operator,
@@ -226,7 +226,7 @@ module.exports = grammar({
       $._expr_atom,
     ),
     
-    expr_app: $ => seq($._expr_atom, repeat1($._expr_atom)),
+    expr_app: $ => seq(field('first', $._expr_atom), repeat1($._expr_atom)),
     
     expr_infix: $ => sepBy2(
       choice(
