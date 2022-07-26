@@ -3,7 +3,7 @@
 (class name: (identifier) @type)
 (ctor name: (identifier) @constructor)
 (typevar (identifier) @variable)
-(pat_identifier @variable.parameter)
+(pat_identifier) @variable.parameter
 
 (expr_app first: (path last: (identifier) @function))
 
@@ -31,12 +31,14 @@
 "fn" @keyword
 "class" @keyword
 "member" @keyword
+"where" @keyword
 "of" @keyword
+"do" @keyword
 "let" @keyword
 "if" @keyword
 "then" @keyword
 "else" @keyword
-(recur) @keyword
+(recur) @function.builtin
 
 (int_literal) @constant.builtin
 (string_literal) @string

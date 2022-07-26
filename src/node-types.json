@@ -52,6 +52,10 @@
         {
           "type": "typevar",
           "named": true
+        },
+        {
+          "type": "where_clause",
+          "named": true
         }
       ]
     }
@@ -76,15 +80,15 @@
       "required": false,
       "types": [
         {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
+          "type": "ty_parens",
           "named": true
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
           "named": true
         }
       ]
@@ -100,6 +104,10 @@
         "types": [
           {
             "type": "expr_parens",
+            "named": true
+          },
+          {
+            "type": "expr_unit",
             "named": true
           },
           {
@@ -127,6 +135,10 @@
       "types": [
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
           "named": true
         },
         {
@@ -178,6 +190,10 @@
         },
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
           "named": true
         },
         {
@@ -236,6 +252,10 @@
           "named": true
         },
         {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
@@ -268,6 +288,10 @@
         },
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
           "named": true
         },
         {
@@ -326,11 +350,23 @@
           "named": true
         },
         {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
           "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
           "named": true
         },
         {
@@ -381,6 +417,10 @@
           "named": true
         },
         {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
@@ -398,6 +438,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "expr_unit",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "fixity",
@@ -450,6 +495,14 @@
           "named": true
         },
         {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
+          "named": true
+        },
+        {
           "type": "ty_app",
           "named": true
         },
@@ -458,7 +511,19 @@
           "named": true
         },
         {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
           "named": true
         }
       ]
@@ -562,15 +627,19 @@
           "named": true
         },
         {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
+          "type": "ty_parens",
           "named": true
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "where_clause",
           "named": true
         }
       ]
@@ -605,6 +674,115 @@
         }
       ]
     }
+  },
+  {
+    "type": "pat_app",
+    "named": true,
+    "fields": {
+      "first": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pat_identifier",
+            "named": true
+          },
+          {
+            "type": "pat_parens",
+            "named": true
+          },
+          {
+            "type": "pat_unit",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pat_infix",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "pat_app",
+          "named": true
+        },
+        {
+          "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pat_parens",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "pat_app",
+          "named": true
+        },
+        {
+          "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_infix",
+          "named": true
+        },
+        {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pat_unit",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "path",
@@ -684,11 +862,23 @@
           "named": true
         },
         {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
         {
           "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
           "named": true
         },
         {
@@ -731,27 +921,19 @@
     "named": true,
     "fields": {
       "first": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
-            "type": "ty_app",
-            "named": true
-          },
-          {
-            "type": "ty_infix",
+            "type": "ty_parens",
             "named": true
           },
           {
             "type": "ty_path",
+            "named": true
+          },
+          {
+            "type": "ty_unit",
             "named": true
           }
         ]
@@ -762,15 +944,15 @@
       "required": true,
       "types": [
         {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
+          "type": "ty_parens",
           "named": true
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
           "named": true
         }
       ]
@@ -793,11 +975,50 @@
           "named": true
         },
         {
-          "type": "ty_infix",
+          "type": "ty_parens",
           "named": true
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ty_parens",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
           "named": true
         }
       ]
@@ -824,6 +1045,46 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ty_unit",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ty_where",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "where_clause",
           "named": true
         }
       ]
@@ -861,7 +1122,19 @@
           "named": true
         },
         {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
           "named": true
         },
         {
@@ -892,7 +1165,107 @@
           "named": true
         },
         {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "where_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "where_kind",
+          "named": true
+        },
+        {
+          "type": "where_member",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "where_kind",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "where_member",
+    "named": true,
+    "fields": {
+      "class": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ty_path",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
           "named": true
         }
       ]
@@ -1036,6 +1409,10 @@
   },
   {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "where",
     "named": false
   },
   {

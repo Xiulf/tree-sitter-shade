@@ -166,6 +166,7 @@ module.exports = grammar({
         '|',
         sepBy1(',', $.fundep),
       )),
+      optional($.where_clause),
       optional(seq(
         '=',
         layout($, $.func),
@@ -183,16 +184,42 @@ module.exports = grammar({
       repeat1($._ty_atom),
       'of',
       field('class', $._ty_path),
+      optional($.where_clause),
       optional(seq(
         '=',
         layout($, $.func),
       )),
     ),
     
+    where_clause: $ => seq(
+      'where',
+      sepBy1(',', choice(
+        $.where_member,
+        $.where_kind,
+      )),
+    ),
+    
+    where_member: $ => seq(
+      field('class', $._ty_path),
+      repeat($._ty_atom),
+    ),
+    
+    where_kind: $ => seq(
+      $.identifier,
+      '::',
+      choice($.ty_infix, $.ty_app, $._ty_atom),
+    ),
+    
     _ty: $ => choice(
+      $.ty_where,
       $.ty_infix,
       $.ty_app,
       $._ty_atom,
+    ),
+    
+    ty_where: $ => seq(
+      choice($.ty_infix, $.ty_app, $._ty_atom),
+      $.where_clause,
     ),
     
     ty_app: $ => seq(field('first', $._ty_atom), repeat1($._ty_atom)),
@@ -203,13 +230,37 @@ module.exports = grammar({
     ),
     
     _ty_atom: $ => choice(
-      seq('(', $._ty, ')'),
       $._ty_path,
+      $.ty_unit,
+      $.ty_parens,
+    ),
+    
+    ty_unit: _ => seq('(', ')'),
+    
+    ty_parens: $ => seq('(', $._ty, ')'),
+    
+    _pattern: $ => choice(
+      $.pat_infix,
+      $.pat_app,
+      $._pat_atom,
+    ),
+    
+    pat_app: $ => seq(field('first', $._pat_atom), repeat1($._pat_atom)),
+    
+    pat_infix: $ => sepBy2(
+      $.operator,
+      choice($.pat_app, $._pat_atom),
     ),
     
     _pat_atom: $ => choice(
       $._pat_ident,
+      $.pat_unit,
+      $.pat_parens,
     ),
+    
+    pat_unit: _ => seq('(', ')'),
+    
+    pat_parens: $ => seq('(', $._pattern, ')'),
     
     _expression: $ => choice(
       $.expr_do,
@@ -239,9 +290,12 @@ module.exports = grammar({
     _expr_atom: $ => choice(
       $.path,
       $._literal,
+      $.expr_unit,
       $.expr_parens,
       $.recur,
     ),
+    
+    expr_unit: _ => seq('(', ')'),
     
     expr_parens: $ => seq('(', $._expression, ')'),
     
