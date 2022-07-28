@@ -5,6 +5,10 @@
 (typevar (identifier) @variable)
 (pat_identifier) @variable.parameter
 
+((import_item (identifier) @type)
+  (#match? @type "^[A-Z]"))
+(import_item (identifier) @function)
+
 (expr_app first: (path last: (identifier) @function))
 
 ((ty_path last: (identifier) @type)

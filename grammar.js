@@ -67,6 +67,20 @@ module.exports = grammar({
     import: $ => seq(
       'import',
       $.path,
+      optional(seq(
+        '(',
+        sepBy(',', $.import_item),
+        ')',
+      )),
+      optional(seq(
+        'as',
+        $.identifier,
+      )),
+    ),
+    
+    import_item: $ => choice(
+      $.identifier,
+      $.symbol,
     ),
     
     fixity: $ => choice(
