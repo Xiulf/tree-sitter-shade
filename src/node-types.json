@@ -193,6 +193,10 @@
           "named": true
         },
         {
+          "type": "expr_typed",
+          "named": true
+        },
+        {
           "type": "expr_unit",
           "named": true
         },
@@ -249,6 +253,10 @@
         },
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_typed",
           "named": true
         },
         {
@@ -350,6 +358,10 @@
           "named": true
         },
         {
+          "type": "expr_typed",
+          "named": true
+        },
+        {
           "type": "expr_unit",
           "named": true
         },
@@ -417,6 +429,10 @@
           "named": true
         },
         {
+          "type": "expr_typed",
+          "named": true
+        },
+        {
           "type": "expr_unit",
           "named": true
         },
@@ -434,6 +450,73 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expr_typed",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_infix",
+          "named": true
+        },
+        {
+          "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        },
+        {
+          "type": "recur",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
           "named": true
         }
       ]
@@ -859,6 +942,10 @@
         },
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_typed",
           "named": true
         },
         {

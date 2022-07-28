@@ -144,14 +144,12 @@ module.exports = grammar({
     
     _func_type: $ => seq(
       optional('foreign'),
-      'fn',
       field('name', $.identifier),
       '::',
       $._ty,
     ),
     
     _func_body: $ => seq(
-      'fn',
       field('name', $.identifier),
       repeat($._pat_atom),
       '=',
@@ -263,6 +261,7 @@ module.exports = grammar({
     pat_parens: $ => seq('(', $._pattern, ')'),
     
     _expression: $ => choice(
+      $.expr_typed,
       $.expr_do,
       $.expr_lambda,
       $.expr_if,
@@ -276,6 +275,8 @@ module.exports = grammar({
       $.expr_app,
       $._expr_atom,
     ),
+    
+    expr_typed: $ => seq($._expression2, '::', $._ty),
     
     expr_app: $ => seq(field('first', $._expr_atom), repeat1($._expr_atom)),
     
