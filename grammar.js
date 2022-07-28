@@ -265,6 +265,7 @@ module.exports = grammar({
       $.expr_do,
       $.expr_lambda,
       $.expr_if,
+      $.expr_case,
       $.expr_infix,
       $.expr_app,
       $._expr_atom,
