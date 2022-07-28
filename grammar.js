@@ -318,6 +318,23 @@ module.exports = grammar({
       $._expression,
     ),
     
+    expr_case: $ => seq(
+      'case',
+      $._expression,
+      'of',
+      layout($, $.case_arm),
+    ),
+    
+    case_arm: $ => seq(
+      $._pattern,
+      optional(seq(
+        'if',
+        $._expression
+      )),
+      '->',
+      $._expression
+    ),
+    
     _expr_block: $ => layout($, $._stmt),
     
     _stmt: $ => choice(

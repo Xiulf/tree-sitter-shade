@@ -38,6 +38,7 @@
 "if" @keyword
 "then" @keyword
 "else" @keyword
+"case" @keyword
 (recur) @function.builtin
 
 (int_literal) @constant.builtin
