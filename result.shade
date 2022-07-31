@@ -1,7 +1,7 @@
-module core/data/result =
+module core.data.result (Result(..), ok, err, unwrap_err) =
 
-import core/data/option (Some, None)
-import core/error (Try, Unwrap)
+import core.data.option (Some, None)
+import core.error (Try, Unwrap)
 import intrinsics (crash)
 
 type Result e t =

@@ -178,6 +178,63 @@
     }
   },
   {
+    "type": "export",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "export_group",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "export_group",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "exports",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "export",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expr_app",
     "named": true,
     "fields": {
@@ -945,6 +1002,10 @@
           "named": true
         },
         {
+          "type": "exports",
+          "named": true
+        },
+        {
           "type": "item",
           "named": true
         }
@@ -1576,7 +1637,11 @@
     "named": false
   },
   {
-    "type": "/",
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "..",
     "named": false
   },
   {

@@ -3,27 +3,41 @@
 (class name: (identifier) @type)
 (ctor name: (identifier) @constructor)
 (typevar (identifier) @variable)
-(pat_identifier) @variable.parameter
+
+(import (path (identifier) @namespace))
+(module (path (identifier) @namespace))
+(exports (path (identifier) @namespace))
+
+((export (identifier) @type)
+  (#match? @type "^[A-Z]"))
+(export (identifier) @function)
+
+(((pat_identifier) @constructor)
+  (#match? @constructor "^[A-Z]"))
+(pat_identifier) @variable
 
 ((import_item (identifier) @type)
   (#match? @type "^[A-Z]"))
 (import_item (identifier) @function)
 
+((expr_app first: (path last: (identifier) @constructor))
+  (#match? @constructor "^[A-Z]"))
 (expr_app first: (path last: (identifier) @function))
 
 ((ty_path last: (identifier) @type)
   (#match? @type "^[A-Z]"))
-((ty_path last: (identifier) @identifier)
-  (#match? @identifier "^[_a-z]"))
+(ty_path last: (identifier) @identifier)
 
-(attribute) @attribute
-(operator) @operator
-(symbol) @operator
-(comment) @comment
-(identifier) @identifier
+((path last: (identifier) @constructor)
+  (#match? @constructor "^[A-Z]"))
+(path "." last: (identifier) @function)
+(path last: (identifier) @identifier)
+(path (identifier) @namespace)
+
+(expr_case "of" @keyword.control.conditional)
 
 "module" @keyword
-"import" @keyword
+"import" @keyword.control.import
 "prefix" @keyword
 "infix" @keyword
 "infixl" @keyword
@@ -32,18 +46,22 @@
 "as" @keyword
 "foreign" @keyword
 "type" @keyword
-"fn" @keyword
+"fn" @keyword.function
 "class" @keyword
 "member" @keyword
 "where" @keyword
 "of" @keyword
 "do" @keyword
 "let" @keyword
-"if" @keyword
-"then" @keyword
-"else" @keyword
-"case" @keyword
+"if" @keyword.control.conditional
+"then" @keyword.control.conditional
+"else" @keyword.control.conditional
+"case" @keyword.control.conditional
 (recur) @function.builtin
 
-(int_literal) @constant.builtin
+(int_literal) @constant.numeric.integer
 (string_literal) @string
+(attribute) @attribute
+(operator) @operator
+(symbol) @operator
+(comment) @comment

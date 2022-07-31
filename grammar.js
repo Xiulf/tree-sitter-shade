@@ -48,8 +48,30 @@ module.exports = grammar({
       repeat($.attribute),
       'module',
       field('name', $.path),
+      optional($.exports),
       '=',
       layout($, $.item),
+    ),
+    
+    exports: $ => seq(
+      '(',
+      sepBy(',', $.export),
+      ')',
+    ),
+    
+    export: $ => choice(
+      seq('module', $.path),
+      $.symbol,
+      seq($.identifier, optional($.export_group)),
+    ),
+    
+    export_group: $ => seq(
+      '(',
+      choice(
+        '..',
+        sepBy(',', $.identifier),
+      ),
+      ')',
     ),
     
     item: $ => seq(
@@ -386,7 +408,7 @@ module.exports = grammar({
     
     operator: _ => /[+=*&^%$#@!~/?><.,\\|-]+/,
     symbol: $ => seq('(', $.operator, token.immediate(')')),
-    path: $ => seq(repeat(seq($.identifier, token.immediate('/'))), field('last', $.identifier)),
+    path: $ => seq(repeat(seq($.identifier, token.immediate('.'))), field('last', $.identifier)),
     identifier: _ => /[_\p{XID_Start}][_\p{XID_Continue}]*'*/,
     comment: _ => token(seq(';', /.*/)),
     
