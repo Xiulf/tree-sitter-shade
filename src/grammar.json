@@ -144,48 +144,56 @@
           "value": "="
         },
         {
-          "type": "SEQ",
+          "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "_layout_start"
-            },
-            {
-              "type": "CHOICE",
+              "type": "SEQ",
               "members": [
                 {
-                  "type": "SEQ",
+                  "type": "SYMBOL",
+                  "name": "_layout_start"
+                },
+                {
+                  "type": "CHOICE",
                   "members": [
                     {
-                      "type": "SYMBOL",
-                      "name": "item"
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "item"
+                        },
+                        {
+                          "type": "REPEAT",
+                          "content": {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "SYMBOL",
+                                "name": "_layout_semicolon"
+                              },
+                              {
+                                "type": "SYMBOL",
+                                "name": "item"
+                              }
+                            ]
+                          }
+                        }
+                      ]
                     },
                     {
-                      "type": "REPEAT",
-                      "content": {
-                        "type": "SEQ",
-                        "members": [
-                          {
-                            "type": "SYMBOL",
-                            "name": "_layout_semicolon"
-                          },
-                          {
-                            "type": "SYMBOL",
-                            "name": "item"
-                          }
-                        ]
-                      }
+                      "type": "BLANK"
                     }
                   ]
                 },
                 {
-                  "type": "BLANK"
+                  "type": "SYMBOL",
+                  "name": "_layout_end"
                 }
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "_layout_end"
+              "type": "BLANK"
             }
           ]
         }
@@ -1325,6 +1333,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_literal"
+        },
+        {
+          "type": "SYMBOL",
           "name": "ty_unit"
         },
         {
@@ -1449,6 +1461,10 @@
         {
           "type": "SYMBOL",
           "name": "_pat_ident"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_literal"
         },
         {
           "type": "SYMBOL",
@@ -1966,7 +1982,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[0-9][0-9_]*"
+          "value": "-?[0-9][0-9_]*"
         },
         {
           "type": "PATTERN",

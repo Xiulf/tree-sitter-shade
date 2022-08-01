@@ -50,7 +50,7 @@ module.exports = grammar({
       field('name', $.path),
       optional($.exports),
       '=',
-      layout($, $.item),
+      optional(layout($, $.item)),
     ),
     
     exports: $ => seq(
@@ -265,6 +265,7 @@ module.exports = grammar({
     
     _ty_atom: $ => choice(
       $._ty_path,
+      $._literal,
       $.ty_unit,
       $.ty_parens,
     ),
@@ -288,6 +289,7 @@ module.exports = grammar({
     
     _pat_atom: $ => choice(
       $._pat_ident,
+      $._literal,
       $.pat_unit,
       $.pat_parens,
     ),
@@ -392,7 +394,7 @@ module.exports = grammar({
     ),
     
     int_literal: _ => choice(
-      /[0-9][0-9_]*/,
+      /-?[0-9][0-9_]*/,
       /0x[0-9a-fA-F_]+/,
       /0b[01_]+/,
     ),

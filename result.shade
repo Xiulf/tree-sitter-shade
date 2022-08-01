@@ -1,4 +1,4 @@
-module core.data.result (Result(..), ok, err, unwrap_err) =
+module core.data.result =
 
 import core.data.option (Some, None)
 import core.error (Try, Unwrap)

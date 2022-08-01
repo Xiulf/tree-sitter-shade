@@ -541,7 +541,7 @@ static Symbolic s_symop(wchar_vec s, State *state) {
       case '-':
         return S_MINUS;
       case '=':
-      case '@':
+      // case '@':
       case '\\':
         return S_INVALID;
       default: return con_or_var(c);
@@ -821,9 +821,9 @@ static bool end_on_infix(uint32_t indent, Symbolic type, State *state) {
  * End a layout if the next token is an infix operator and the indent is equal to or less than the current layout.
  */
 static Result newline_infix(uint32_t indent, Symbolic type, State *state) {
-  if (end_on_infix(indent, type, state)) {
-    return layout_end("newline_infix", state);
-  }
+  // if (end_on_infix(indent, type, state)) {
+  //   return layout_end("newline_infix", state);
+  // }
   return res_cont;
 }
 
