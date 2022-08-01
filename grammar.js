@@ -408,7 +408,7 @@ module.exports = grammar({
     _ty_path: $ => alias($.path, $.ty_path),
     _pat_ident: $ => alias($.identifier, $.pat_identifier),
     
-    operator: _ => /[+=*&^%$#@!~/?><.,\\|-]+/,
+    operator: _ => /[+=*&^%$#@!~/?><.,:\\|-]+/,
     symbol: $ => seq('(', $.operator, token.immediate(')')),
     path: $ => seq(repeat(seq($.identifier, token.immediate('.'))), field('last', $.identifier)),
     identifier: _ => /[_\p{XID_Start}][_\p{XID_Continue}]*'*/,
