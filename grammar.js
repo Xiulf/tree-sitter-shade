@@ -419,11 +419,11 @@ module.exports = grammar({
 });
 
 function sepBy2(sep, rule) {
-  return seq(rule, repeat1(seq(sep, rule)));
+  return seq(rule, repeat1(seq(sep, rule)), optional(sep));
 }
 
 function sepBy1(sep, rule) {
-  return seq(rule, repeat(seq(sep, rule)));
+  return seq(rule, repeat(seq(sep, rule)), optional(sep));
 }
 
 function sepBy(sep, rule) {

@@ -20,9 +20,9 @@
   (#match? @type "^[A-Z]"))
 (import_item (identifier) @function)
 
-((expr_infix (path last: (identifier) @constructor))
+((expr_infix "`" (path last: (identifier) @constructor) "`")
   (#match? @constructor "^[A-Z]"))
-(expr_infix (path last: (identifier) @function))
+(expr_infix "`" (path last: (identifier) @function) "`")
 
 ((expr_app first: (path last: (identifier) @constructor))
   (#match? @constructor "^[A-Z]"))
