@@ -251,6 +251,22 @@
         "required": true,
         "types": [
           {
+            "type": "expr_case",
+            "named": true
+          },
+          {
+            "type": "expr_do",
+            "named": true
+          },
+          {
+            "type": "expr_if",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
             "type": "expr_parens",
             "named": true
           },
@@ -281,6 +297,22 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "expr_case",
+          "named": true
+        },
+        {
+          "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_if",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
+          "named": true
+        },
         {
           "type": "expr_parens",
           "named": true
@@ -518,6 +550,22 @@
           "named": true
         },
         {
+          "type": "expr_case",
+          "named": true
+        },
+        {
+          "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_if",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
+          "named": true
+        },
+        {
           "type": "expr_parens",
           "named": true
         },
@@ -699,7 +747,23 @@
           "named": true
         },
         {
+          "type": "expr_case",
+          "named": true
+        },
+        {
+          "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_if",
+          "named": true
+        },
+        {
           "type": "expr_infix",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
           "named": true
         },
         {

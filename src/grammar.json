@@ -1647,31 +1647,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "expr_do"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expr_lambda"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expr_if"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expr_case"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expr_infix"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expr_app"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expr_atom"
+          "name": "_expression2"
         }
       ]
     },
@@ -1833,11 +1809,15 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "_literal"
+        },
+        {
+          "type": "SYMBOL",
           "name": "path"
         },
         {
           "type": "SYMBOL",
-          "name": "_literal"
+          "name": "recur"
         },
         {
           "type": "SYMBOL",
@@ -1849,7 +1829,19 @@
         },
         {
           "type": "SYMBOL",
-          "name": "recur"
+          "name": "expr_do"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expr_lambda"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expr_if"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expr_case"
         }
       ]
     },
@@ -2324,7 +2316,66 @@
       "name": "comment"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "where_clause"
+    ],
+    [
+      "where_kind",
+      "path"
+    ],
+    [
+      "where_kind",
+      "ty_infix"
+    ],
+    [
+      "where_kind",
+      "ty_app"
+    ],
+    [
+      "where_member"
+    ],
+    [
+      "_ty",
+      "ty_infix"
+    ],
+    [
+      "_ty",
+      "ty_app"
+    ],
+    [
+      "ty_infix",
+      "ty_app"
+    ],
+    [
+      "ty_infix"
+    ],
+    [
+      "ty_app"
+    ],
+    [
+      "_expression",
+      "expr_typed"
+    ],
+    [
+      "_expression2",
+      "expr_infix"
+    ],
+    [
+      "_expression2",
+      "expr_app"
+    ],
+    [
+      "expr_infix",
+      "expr_app"
+    ],
+    [
+      "expr_infix"
+    ],
+    [
+      "expr_app"
+    ]
+  ],
   "precedences": [],
   "externals": [
     {

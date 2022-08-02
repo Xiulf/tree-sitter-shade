@@ -17,6 +17,27 @@ module.exports = grammar({
     /\n/,
     $.empty_file,
   ],
+  
+  conflicts: $ => [
+    [$.where_clause],
+    [$.where_kind, $.path],
+    [$.where_kind, $.ty_infix],
+    [$.where_kind, $.ty_app],
+    [$.where_member],
+    
+    [$._ty, $.ty_infix],
+    [$._ty, $.ty_app],
+    [$.ty_infix, $.ty_app],
+    [$.ty_infix],
+    [$.ty_app],
+
+    [$._expression, $.expr_typed],
+    [$._expression2, $.expr_infix],
+    [$._expression2, $.expr_app],
+    [$.expr_infix, $.expr_app],
+    [$.expr_infix],
+    [$.expr_app],
+  ],
 
   word: $ => $.identifier,
 
@@ -300,13 +321,7 @@ module.exports = grammar({
     
     _expression: $ => choice(
       $.expr_typed,
-      $.expr_do,
-      $.expr_lambda,
-      $.expr_if,
-      $.expr_case,
-      $.expr_infix,
-      $.expr_app,
-      $._expr_atom,
+      $._expression2,
     ),
     
     _expression2: $ => choice(
@@ -328,11 +343,15 @@ module.exports = grammar({
     ),
     
     _expr_atom: $ => choice(
-      $.path,
       $._literal,
+      $.path,
+      $.recur,
       $.expr_unit,
       $.expr_parens,
-      $.recur,
+      $.expr_do,
+      $.expr_lambda,
+      $.expr_if,
+      $.expr_case,
     ),
     
     expr_unit: _ => seq('(', ')'),

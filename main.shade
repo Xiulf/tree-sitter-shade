@@ -1,20 +1,29 @@
-module main =
+module Main =
 
-import core
-import js.console
+import Core
+import Js
+import Js.Console
 
 @main
-main = 
-    let a = test
-    let b = Err $ 21 - 4 + 12
+main =
+    let a = 0 : 1 : 2 : 3 : 4 : Nil
+    let b = map a fn x -> x * 2
 
-    log a
-    log b
+    log $ spread $ toArray b
 
 
-test =
-    let go = fn x -> do
-        if x == 0 then 1
-        else x * recur (x - 1)
+toArray list =
+    let go = fn list arr -> case list of
+        x : xs -> recur xs (push arr x)
+        _ -> arr
     
-    go 5
+    go list (new "Array")
+
+
+class Map m =
+    map :: m a -> (a -> b) -> m b
+
+member List of Map =
+    map list f = case list of
+        x : xs -> f x : map xs f
+        Nil -> Nil
