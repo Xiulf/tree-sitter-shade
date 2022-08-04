@@ -43,6 +43,10 @@
           "named": true
         },
         {
+          "type": "expr_field",
+          "named": true
+        },
+        {
           "type": "expr_if",
           "named": true
         },
@@ -251,19 +255,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr_case",
-            "named": true
-          },
-          {
-            "type": "expr_do",
-            "named": true
-          },
-          {
-            "type": "expr_if",
-            "named": true
-          },
-          {
-            "type": "expr_lambda",
+            "type": "expr_field",
             "named": true
           },
           {
@@ -303,6 +295,10 @@
         },
         {
           "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_field",
           "named": true
         },
         {
@@ -362,6 +358,10 @@
         },
         {
           "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_field",
           "named": true
         },
         {
@@ -428,6 +428,10 @@
           "named": true
         },
         {
+          "type": "expr_field",
+          "named": true
+        },
+        {
           "type": "expr_if",
           "named": true
         },
@@ -475,6 +479,33 @@
     }
   },
   {
+    "type": "expr_field",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr_field",
+          "named": true
+        },
+        {
+          "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expr_if",
     "named": true,
     "fields": {},
@@ -492,6 +523,10 @@
         },
         {
           "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_field",
           "named": true
         },
         {
@@ -550,19 +585,7 @@
           "named": true
         },
         {
-          "type": "expr_case",
-          "named": true
-        },
-        {
-          "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_if",
-          "named": true
-        },
-        {
-          "type": "expr_lambda",
+          "type": "expr_field",
           "named": true
         },
         {
@@ -614,6 +637,10 @@
         },
         {
           "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_field",
           "named": true
         },
         {
@@ -692,6 +719,10 @@
           "named": true
         },
         {
+          "type": "expr_field",
+          "named": true
+        },
+        {
           "type": "expr_if",
           "named": true
         },
@@ -747,23 +778,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
-          "named": true
-        },
-        {
-          "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_if",
+          "type": "expr_field",
           "named": true
         },
         {
           "type": "expr_infix",
-          "named": true
-        },
-        {
-          "type": "expr_lambda",
           "named": true
         },
         {
@@ -929,6 +948,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "import",
@@ -1159,6 +1183,11 @@
     }
   },
   {
+    "type": "pat_identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "pat_infix",
     "named": true,
     "fields": {},
@@ -1261,7 +1290,7 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "module_name",
           "named": true
         }
       ]
@@ -1304,6 +1333,10 @@
         },
         {
           "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_field",
           "named": true
         },
         {
@@ -1541,7 +1574,7 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "module_name",
           "named": true
         }
       ]
@@ -1889,10 +1922,6 @@
     "named": false
   },
   {
-    "type": "identifier",
-    "named": true
-  },
-  {
     "type": "if",
     "named": false
   },
@@ -1925,15 +1954,15 @@
     "named": false
   },
   {
+    "type": "module_name",
+    "named": true
+  },
+  {
     "type": "of",
     "named": false
   },
   {
     "type": "operator",
-    "named": true
-  },
-  {
-    "type": "pat_identifier",
     "named": true
   },
   {

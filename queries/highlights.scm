@@ -36,7 +36,7 @@
   (#match? @constructor "^[A-Z]"))
 (path "." last: (identifier) @function)
 (path last: (identifier) @identifier)
-(path (identifier) @namespace)
+(path (module_name) @namespace)
 
 (expr_case "of" @keyword.control.conditional)
 
