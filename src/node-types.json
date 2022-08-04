@@ -63,6 +63,10 @@
           "named": true
         },
         {
+          "type": "expr_record",
+          "named": true
+        },
+        {
           "type": "expr_typed",
           "named": true
         },
@@ -88,6 +92,10 @@
         },
         {
           "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_record",
           "named": true
         },
         {
@@ -183,6 +191,14 @@
           "named": true
         },
         {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
           "type": "ty_unit",
           "named": true
         }
@@ -263,6 +279,10 @@
             "named": true
           },
           {
+            "type": "expr_record",
+            "named": true
+          },
+          {
             "type": "expr_unit",
             "named": true
           },
@@ -311,6 +331,10 @@
         },
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_record",
           "named": true
         },
         {
@@ -381,6 +405,10 @@
           "named": true
         },
         {
+          "type": "expr_record",
+          "named": true
+        },
+        {
           "type": "expr_typed",
           "named": true
         },
@@ -445,6 +473,10 @@
         },
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_record",
           "named": true
         },
         {
@@ -546,6 +578,10 @@
           "named": true
         },
         {
+          "type": "expr_record",
+          "named": true
+        },
+        {
           "type": "expr_typed",
           "named": true
         },
@@ -590,6 +626,10 @@
         },
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_record",
           "named": true
         },
         {
@@ -660,6 +700,10 @@
           "named": true
         },
         {
+          "type": "expr_record",
+          "named": true
+        },
+        {
           "type": "expr_typed",
           "named": true
         },
@@ -677,6 +721,10 @@
         },
         {
           "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_record",
           "named": true
         },
         {
@@ -739,6 +787,10 @@
           "named": true
         },
         {
+          "type": "expr_record",
+          "named": true
+        },
+        {
           "type": "expr_typed",
           "named": true
         },
@@ -766,6 +818,21 @@
     }
   },
   {
+    "type": "expr_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "record_field",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expr_typed",
     "named": true,
     "fields": {},
@@ -787,6 +854,10 @@
         },
         {
           "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_record",
           "named": true
         },
         {
@@ -823,6 +894,14 @@
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
           "named": true
         },
         {
@@ -900,6 +979,10 @@
           "named": true
         },
         {
+          "type": "pat_record",
+          "named": true
+        },
+        {
           "type": "pat_unit",
           "named": true
         },
@@ -921,6 +1004,14 @@
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
           "named": true
         },
         {
@@ -1080,6 +1171,14 @@
           "named": true
         },
         {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
           "type": "ty_unit",
           "named": true
         },
@@ -1145,6 +1244,10 @@
             "named": true
           },
           {
+            "type": "pat_record",
+            "named": true
+          },
+          {
             "type": "pat_unit",
             "named": true
           },
@@ -1169,6 +1272,10 @@
         },
         {
           "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_record",
           "named": true
         },
         {
@@ -1216,6 +1323,10 @@
           "named": true
         },
         {
+          "type": "pat_record",
+          "named": true
+        },
+        {
           "type": "pat_unit",
           "named": true
         },
@@ -1255,11 +1366,30 @@
           "named": true
         },
         {
+          "type": "pat_record",
+          "named": true
+        },
+        {
           "type": "pat_unit",
           "named": true
         },
         {
           "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pat_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "record_field",
           "named": true
         }
       ]
@@ -1291,6 +1421,113 @@
       "types": [
         {
           "type": "module_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_field",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_field",
+          "named": true
+        },
+        {
+          "type": "expr_infix",
+          "named": true
+        },
+        {
+          "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_record",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "pat_app",
+          "named": true
+        },
+        {
+          "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_infix",
+          "named": true
+        },
+        {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_record",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        },
+        {
+          "type": "recur",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
           "named": true
         }
       ]
@@ -1356,6 +1593,10 @@
           "named": true
         },
         {
+          "type": "expr_record",
+          "named": true
+        },
+        {
           "type": "expr_typed",
           "named": true
         },
@@ -1373,6 +1614,10 @@
         },
         {
           "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_record",
           "named": true
         },
         {
@@ -1439,6 +1684,14 @@
             "named": true
           },
           {
+            "type": "ty_record",
+            "named": true
+          },
+          {
+            "type": "ty_row",
+            "named": true
+          },
+          {
             "type": "ty_unit",
             "named": true
           }
@@ -1463,6 +1716,14 @@
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
           "named": true
         },
         {
@@ -1505,6 +1766,14 @@
           "named": true
         },
         {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
           "type": "ty_unit",
           "named": true
         }
@@ -1541,6 +1810,14 @@
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
           "named": true
         },
         {
@@ -1581,6 +1858,108 @@
     }
   },
   {
+    "type": "ty_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "record_field",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ty_row",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "record_field",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ty_unit",
     "named": true,
     "fields": {}
@@ -1615,6 +1994,14 @@
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
           "named": true
         },
         {
@@ -1676,6 +2063,14 @@
           "named": true
         },
         {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
           "type": "ty_unit",
           "named": true
         },
@@ -1724,6 +2119,14 @@
         },
         {
           "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
           "named": true
         },
         {
@@ -1793,6 +2196,14 @@
           "named": true
         },
         {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
           "type": "ty_unit",
           "named": true
         }
@@ -1835,6 +2246,14 @@
           "named": true
         },
         {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
           "type": "ty_unit",
           "named": true
         }
@@ -1867,6 +2286,10 @@
   },
   {
     "type": "..",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
@@ -1990,7 +2413,15 @@
     "named": false
   },
   {
+    "type": "{",
+    "named": false
+  },
+  {
     "type": "|",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]

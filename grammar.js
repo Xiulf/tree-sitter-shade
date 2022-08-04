@@ -225,13 +225,13 @@ module.exports = grammar({
       )),
     ),
     
-    where_clause: $ => seq(
+    where_clause: $ => prec.left(seq(
       'where',
       sepBy1(',', choice(
         $.where_member,
         $.where_kind,
       )),
-    ),
+    )),
     
     where_member: $ => seq(
       field('class', $._ty_path),
@@ -251,6 +251,12 @@ module.exports = grammar({
       $._ty_atom,
     )),
     
+    _ty2: $ => choice(
+      $.ty_infix,
+      $.ty_app,
+      $._ty_atom,
+    ),
+    
     ty_where: $ => seq(
       choice($.ty_infix, $.ty_app, $._ty_atom),
       $.where_clause,
@@ -268,11 +274,29 @@ module.exports = grammar({
       $._literal,
       $.ty_unit,
       $.ty_parens,
+      $.ty_row,
+      $.ty_record,
     ),
     
     ty_unit: _ => seq('(', ')'),
     
     ty_parens: $ => seq('(', $._ty, ')'),
+    
+    ty_row: $ => seq(
+      '(',
+      sepBy1(',', alias($._ty_record_field, $.record_field)),
+      optional(seq('|', $._ty2)),
+      ')',
+    ),
+    
+    ty_record: $ => seq(
+      '{',
+      sepBy1(',', alias($._ty_record_field, $.record_field)),
+      optional(seq('|', $._ty2)),
+      '}',
+    ),
+    
+    _ty_record_field: $ => seq($.identifier, '::', $._ty2),
     
     _pattern: $ => choice(
       $.pat_infix,
@@ -292,11 +316,24 @@ module.exports = grammar({
       $._literal,
       $.pat_unit,
       $.pat_parens,
+      $.pat_record,
     ),
     
     pat_unit: _ => seq('(', ')'),
     
     pat_parens: $ => seq('(', $._pattern, ')'),
+    
+    pat_record: $ => seq(
+      '{',
+      sepBy(',', alias($._pat_record_field, $.record_field)),
+      optional('..'),
+      '}',
+    ),
+    
+    _pat_record_field: $ => choice(
+      seq($.identifier, ':', $._pattern),
+      $.identifier,
+    ),
     
     _expression: $ => prec(4, choice(
       $.expr_typed,
@@ -336,6 +373,7 @@ module.exports = grammar({
       $.recur,
       $.expr_unit,
       $.expr_parens,
+      $.expr_record,
       $.expr_field,
     ),
     
@@ -350,6 +388,17 @@ module.exports = grammar({
     expr_unit: _ => seq('(', ')'),
     
     expr_parens: $ => seq('(', $._expression, ')'),
+    
+    expr_record: $ => seq(
+      '{',
+      sepBy(',', alias($._expr_record_field, $.record_field)),
+      '}',
+    ),
+    
+    _expr_record_field: $ => choice(
+      seq($.identifier, '=', $._expression2),
+      $.identifier,
+    ),
     
     expr_do: $ => seq('do', $._expr_block),
     
