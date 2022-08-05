@@ -55,6 +55,8 @@
 "foreign" @keyword
 "type" @keyword
 "fn" @keyword.function
+"const" @keyword
+"static" @keyword
 "class" @keyword
 "member" @keyword
 "where" @keyword

@@ -81,6 +81,8 @@ module.exports = grammar({
         $.fixity,
         $.type,
         $.func,
+        $.const,
+        $.static,
         $.class,
         $.member,
       ),
@@ -190,6 +192,45 @@ module.exports = grammar({
       repeat($._pat_atom),
       '=',
       alias($._expr_block, $.expr_do),
+    ),
+    
+    const: $ => choice(
+      $._const_type,
+      $._const_body,
+    ),
+    
+    _const_type: $ => seq(
+      'const',
+      field('name', $.identifier),
+      '::',
+      $._ty,
+    ),
+    
+    _const_body: $ => seq(
+      'const',
+      field('name', $.identifier),
+      '=',
+      $._expression,
+    ),
+    
+    static: $ => choice(
+      $._static_type,
+      $._static_body,
+    ),
+    
+    _static_type: $ => seq(
+      optional('foreign'),
+      'static',
+      field('name', $.identifier),
+      '::',
+      $._ty,
+    ),
+    
+    _static_body: $ => seq(
+      'static',
+      field('name', $.identifier),
+      '=',
+      $._expression,
     ),
     
     class: $ => seq(
