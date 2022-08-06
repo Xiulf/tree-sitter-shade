@@ -1,4 +1,6 @@
 (func name: (identifier) @function)
+(const name: (identifier) @constant)
+(static name: (identifier) @constant)
 (type name: (identifier) @type)
 (class name: (identifier) @type)
 (ctor name: (identifier) @constructor)
@@ -60,6 +62,7 @@
 "class" @keyword
 "member" @keyword
 "where" @keyword
+"forall" @keyword
 "of" @keyword
 "do" @keyword
 "let" @keyword

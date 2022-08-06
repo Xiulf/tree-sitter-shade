@@ -152,7 +152,7 @@ module.exports = grammar({
     _type_alias: $ => seq(
       'type',
       field('name', $.identifier),
-      repeat($.typevar),
+      repeat($._typevar),
       '=',
       $._ty,
     ),
@@ -160,7 +160,7 @@ module.exports = grammar({
     _type_ctor: $ => seq(
       'type',
       field('name', $.identifier),
-      repeat($.typevar),
+      repeat($._typevar),
       '=',
       repeat1(seq('|', $.ctor)),
     ),
@@ -170,10 +170,7 @@ module.exports = grammar({
       repeat($._ty_atom),
     ),
     
-    typevar: $ => choice(
-      seq('(', $.identifier, '::', $._ty, ')'),
-      $.identifier,
-    ),
+    _typevar: $ => alias($.identifier, $.typevar),
     
     func: $ => choice(
       $._func_type,
@@ -236,7 +233,7 @@ module.exports = grammar({
     class: $ => seq(
       'class',
       field('name', $.identifier),
-      repeat($.typevar),
+      repeat($._typevar),
       optional(seq(
         '|',
         sepBy1(',', $.fundep),
@@ -286,6 +283,7 @@ module.exports = grammar({
     )),
     
     _ty: $ => prec(1, choice(
+      $.ty_forall,
       $.ty_where,
       $.ty_infix,
       $.ty_app,
@@ -296,6 +294,13 @@ module.exports = grammar({
       $.ty_infix,
       $.ty_app,
       $._ty_atom,
+    ),
+    
+    ty_forall: $ => seq(
+      'forall',
+      repeat($._typevar),
+      '.',
+      $._ty,
     ),
     
     ty_where: $ => seq(

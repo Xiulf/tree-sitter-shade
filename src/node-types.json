@@ -239,6 +239,10 @@
           "named": true
         },
         {
+          "type": "ty_forall",
+          "named": true
+        },
+        {
           "type": "ty_infix",
           "named": true
         },
@@ -999,6 +1003,10 @@
           "named": true
         },
         {
+          "type": "ty_forall",
+          "named": true
+        },
+        {
           "type": "ty_infix",
           "named": true
         },
@@ -1106,6 +1114,10 @@
         },
         {
           "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_forall",
           "named": true
         },
         {
@@ -1758,6 +1770,10 @@
           "named": true
         },
         {
+          "type": "ty_forall",
+          "named": true
+        },
+        {
           "type": "ty_infix",
           "named": true
         },
@@ -1970,6 +1986,65 @@
     }
   },
   {
+    "type": "ty_forall",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_forall",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
+          "named": true
+        },
+        {
+          "type": "typevar",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ty_infix",
     "named": true,
     "fields": {},
@@ -2034,6 +2109,10 @@
         },
         {
           "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_forall",
           "named": true
         },
         {
@@ -2287,6 +2366,10 @@
           "named": true
         },
         {
+          "type": "ty_forall",
+          "named": true
+        },
+        {
           "type": "ty_infix",
           "named": true
         },
@@ -2324,57 +2407,7 @@
   {
     "type": "typevar",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "where_clause",
@@ -2578,6 +2611,10 @@
   },
   {
     "type": "fn",
+    "named": false
+  },
+  {
+    "type": "forall",
     "named": false
   },
   {
