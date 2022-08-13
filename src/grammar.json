@@ -2807,7 +2807,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_pat_atom"
+          "name": "_pattern"
         },
         {
           "type": "STRING",

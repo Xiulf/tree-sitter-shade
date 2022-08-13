@@ -490,7 +490,7 @@ module.exports = grammar({
     
     stmt_let: $ => seq(
       'let',
-      $._pat_atom,
+      $._pattern,
       '=',
       $._expression,
     ),

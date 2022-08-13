@@ -1861,7 +1861,15 @@
           "named": true
         },
         {
+          "type": "pat_app",
+          "named": true
+        },
+        {
           "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_infix",
           "named": true
         },
         {

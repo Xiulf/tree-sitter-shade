@@ -4,7 +4,7 @@
 (type name: (identifier) @type)
 (class name: (identifier) @type)
 (ctor name: (identifier) @constructor)
-(typevar (identifier) @variable)
+(typevar) @variable
 
 (import (path (identifier) @namespace))
 (module (path (identifier) @namespace))
@@ -26,6 +26,7 @@
   (#match? @constructor "^[A-Z]"))
 (expr_infix "`" (path last: (identifier) @function) "`")
 
+(expr_app first: (expr_field (identifier) @function))
 (expr_field (identifier) @property)
 
 ((expr_app first: (path last: (identifier) @constructor))
@@ -62,7 +63,7 @@
 "class" @keyword
 "member" @keyword
 "where" @keyword
-"forall" @keyword
+"forall" @keyword.control.repeat
 "of" @keyword
 "do" @keyword
 "let" @keyword
