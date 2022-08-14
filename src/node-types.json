@@ -35,6 +35,10 @@
           "named": true
         },
         {
+          "type": "expr_array",
+          "named": true
+        },
+        {
           "type": "expr_case",
           "named": true
         },
@@ -176,6 +180,10 @@
       "types": [
         {
           "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
           "named": true
         },
         {
@@ -389,6 +397,10 @@
         "required": true,
         "types": [
           {
+            "type": "expr_array",
+            "named": true
+          },
+          {
             "type": "expr_field",
             "named": true
           },
@@ -427,6 +439,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "expr_array",
+          "named": true
+        },
         {
           "type": "expr_case",
           "named": true
@@ -479,6 +495,81 @@
     }
   },
   {
+    "type": "expr_array",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
+          "named": true
+        },
+        {
+          "type": "expr_case",
+          "named": true
+        },
+        {
+          "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_field",
+          "named": true
+        },
+        {
+          "type": "expr_if",
+          "named": true
+        },
+        {
+          "type": "expr_infix",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_record",
+          "named": true
+        },
+        {
+          "type": "expr_typed",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        },
+        {
+          "type": "recur",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expr_case",
     "named": true,
     "fields": {},
@@ -492,6 +583,10 @@
         },
         {
           "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
           "named": true
         },
         {
@@ -563,6 +658,10 @@
       "types": [
         {
           "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
           "named": true
         },
         {
@@ -668,6 +767,10 @@
           "named": true
         },
         {
+          "type": "expr_array",
+          "named": true
+        },
+        {
           "type": "expr_case",
           "named": true
         },
@@ -739,6 +842,10 @@
           "named": true
         },
         {
+          "type": "expr_array",
+          "named": true
+        },
+        {
           "type": "expr_field",
           "named": true
         },
@@ -787,6 +894,10 @@
       "types": [
         {
           "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
           "named": true
         },
         {
@@ -877,6 +988,10 @@
           "named": true
         },
         {
+          "type": "expr_array",
+          "named": true
+        },
+        {
           "type": "expr_case",
           "named": true
         },
@@ -960,6 +1075,10 @@
       "types": [
         {
           "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
           "named": true
         },
         {
@@ -1573,6 +1692,10 @@
           "named": true
         },
         {
+          "type": "expr_array",
+          "named": true
+        },
+        {
           "type": "expr_field",
           "named": true
         },
@@ -1710,6 +1833,10 @@
           "named": true
         },
         {
+          "type": "expr_array",
+          "named": true
+        },
+        {
           "type": "expr_case",
           "named": true
         },
@@ -1814,6 +1941,10 @@
       "types": [
         {
           "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
           "named": true
         },
         {
@@ -2579,6 +2710,14 @@
   },
   {
     "type": "@",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {

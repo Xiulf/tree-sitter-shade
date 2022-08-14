@@ -419,6 +419,7 @@ module.exports = grammar({
       $.recur,
       $.expr_unit,
       $.expr_parens,
+      $.expr_array,
       $.expr_record,
       $.expr_field,
     ),
@@ -434,6 +435,12 @@ module.exports = grammar({
     expr_unit: _ => seq('(', ')'),
     
     expr_parens: $ => seq('(', $._expression, ')'),
+    
+    expr_array: $ => seq(
+      '[',
+      sepBy(',', $._expression),
+      ']',
+    ),
     
     expr_record: $ => seq(
       '{',
