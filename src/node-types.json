@@ -832,7 +832,26 @@
   {
     "type": "expr_infix",
     "named": true,
-    "fields": {},
+    "fields": {
+      "operator": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "`",
+            "named": false
+          },
+          {
+            "type": "operator",
+            "named": true
+          },
+          {
+            "type": "path",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -863,10 +882,6 @@
         },
         {
           "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "operator",
           "named": true
         },
         {

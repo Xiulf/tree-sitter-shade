@@ -406,10 +406,10 @@ module.exports = grammar({
     ),
     
     expr_infix: $ => prec(2, sepBy2(
-      choice(
+      field('operator', choice(
         seq('`', $.path, '`'),
         $.operator,
-      ),
+      )),
       choice($.expr_app, $._expr_atom),
     )),
     
