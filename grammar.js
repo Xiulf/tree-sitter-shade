@@ -501,9 +501,9 @@ module.exports = grammar({
       seq('->', $._expression),
       seq(
         repeat1(choice(
-          seq('else', '->', $._expr_atom),
-          seq('if', $._expr_atom, '->', $._expr_atom),
+          seq('if', $._expression, '->', $._expression3),
         )),
+        optional(seq('else', '->', $._expression)),
       ),
     ),
     

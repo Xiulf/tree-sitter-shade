@@ -2953,28 +2953,11 @@
                     "members": [
                       {
                         "type": "STRING",
-                        "value": "else"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "->"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_expr_atom"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
                         "value": "if"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "_expr_atom"
+                        "name": "_expression"
                       },
                       {
                         "type": "STRING",
@@ -2982,12 +2965,37 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "_expr_atom"
+                        "name": "_expression3"
                       }
                     ]
                   }
                 ]
               }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "else"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "->"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "_expression"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         }
