@@ -394,6 +394,12 @@ module.exports = grammar({
       $._expr_atom,
     )),
     
+    _expression3: $ => prec(3, choice(
+      alias($._expr_infix2, $.expr_infix),
+      alias($._expr_app2, $.expr_app),
+      $._expr_atom,
+    )),
+    
     expr_typed: $ => seq($._expression2, '::', $._ty),
     
     expr_app: $ => seq(field('first', $._expr_atom), repeat($._expr_atom), $._expr_atom2),
@@ -411,6 +417,14 @@ module.exports = grammar({
         $.operator,
       )),
       choice($.expr_app, $._expr_atom),
+    )),
+    
+    _expr_infix2: $ => prec(2, sepBy2(
+      field('operator', choice(
+        seq('`', $.path, '`'),
+        $.operator,
+      )),
+      choice(alias($._expr_app2, $.expr_app), $._expr_atom),
     )),
     
     _expr_atom: $ => choice(
@@ -480,12 +494,15 @@ module.exports = grammar({
     
     case_arm: $ => seq(
       $._pattern,
-      optional(seq(
-        'if',
-        $._expression
+      $.case_value,
+    ),
+    
+    case_value: $ => choice(
+      seq('->', $._expression),
+      repeat1(choice(
+        seq('if', $._expression3, '->', $._expression3),
+        seq('else', '->', $._expression3),
       )),
-      '->',
-      $._expression
     ),
     
     _expr_block: $ => layout($, $._stmt),
