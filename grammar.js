@@ -499,10 +499,12 @@ module.exports = grammar({
     
     case_value: $ => choice(
       seq('->', $._expression),
-      repeat1(choice(
-        seq('if', $._expression3, '->', $._expression3),
-        seq('else', '->', $._expression3),
-      )),
+      seq(
+        repeat1(choice(
+          seq('else', '->', $._expr_atom),
+          seq('if', $._expr_atom, '->', $._expr_atom),
+        )),
+      ),
     ),
     
     _expr_block: $ => layout($, $._stmt),
