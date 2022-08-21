@@ -22,8 +22,11 @@ module.exports = grammar({
 
   rules: {
     source_file: $ => choice(
-      $.module,
       $.empty_file,
+      seq(
+        repeat($.attribute),
+        $.module,
+      ),
     ),
     
     attribute: $ => seq(
@@ -45,7 +48,6 @@ module.exports = grammar({
     ),
 
     module: $ => seq(
-      repeat($.attribute),
       'module',
       field('name', $.path),
       optional($.exports),
@@ -77,6 +79,7 @@ module.exports = grammar({
     item: $ => seq(
       repeat($.attribute),
       choice(
+        $.module,
         $.import,
         $.fixity,
         $.type,

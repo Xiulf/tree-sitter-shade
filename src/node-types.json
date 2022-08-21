@@ -1412,6 +1412,10 @@
           "named": true
         },
         {
+          "type": "module",
+          "named": true
+        },
+        {
           "type": "static",
           "named": true
         },
@@ -1499,10 +1503,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "attribute",
-          "named": true
-        },
         {
           "type": "exports",
           "named": true
@@ -1833,9 +1833,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
         {
           "type": "empty_file",
           "named": true

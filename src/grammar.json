@@ -7,11 +7,23 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "module"
+          "name": "empty_file"
         },
         {
-          "type": "SYMBOL",
-          "name": "empty_file"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SYMBOL",
+                "name": "attribute"
+              }
+            },
+            {
+              "type": "SYMBOL",
+              "name": "module"
+            }
+          ]
         }
       ]
     },
@@ -120,13 +132,6 @@
     "module": {
       "type": "SEQ",
       "members": [
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "attribute"
-          }
-        },
         {
           "type": "STRING",
           "value": "module"
@@ -404,6 +409,10 @@
         {
           "type": "CHOICE",
           "members": [
+            {
+              "type": "SYMBOL",
+              "name": "module"
+            },
             {
               "type": "SYMBOL",
               "name": "import"
