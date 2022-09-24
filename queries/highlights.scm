@@ -66,6 +66,7 @@
 "forall" @keyword.control.repeat
 "of" @keyword
 "do" @keyword
+"try" @keyword
 "let" @keyword
 "if" @keyword.control.conditional
 "then" @keyword.control.conditional

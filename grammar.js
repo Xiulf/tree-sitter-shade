@@ -444,6 +444,7 @@ module.exports = grammar({
     _expr_atom2: $ => prec(1, choice(
       $._expr_atom,
       $.expr_do,
+      $.expr_try,
       $.expr_lambda,
       $.expr_if,
       $.expr_case,
@@ -471,6 +472,8 @@ module.exports = grammar({
     ),
     
     expr_do: $ => seq('do', $._expr_block),
+
+    expr_try: $ => seq('try', $._expr_block),
     
     expr_lambda: $ => seq(
       'fn',
@@ -511,10 +514,23 @@ module.exports = grammar({
     ),
     
     _expr_block: $ => layout($, $._stmt),
+    _try_block: $ => layout($, $._try_stmt),
     
     _stmt: $ => choice(
       $.stmt_let,
       $._expression
+    ),
+    
+    _try_stmt: $ => choice(
+      $.stmt_bind,
+      $.stmt_let,
+      $._expression
+    ),
+    
+    stmt_bind: $ => seq(
+      $._pattern,
+      '<-',
+      $._expression,
     ),
     
     stmt_let: $ => seq(
