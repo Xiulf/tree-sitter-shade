@@ -19,6 +19,13 @@ module.exports = grammar({
   ],
 
   word: $ => $._lowercase_identifier,
+  
+  conflicts: $ => [
+    [$._pat_ident, $.path],
+    [$.pat_unit, $.expr_unit],
+    [$.pat_record, $.expr_record],
+    [$._pat_record_field, $._expr_record_field],
+  ],
 
   rules: {
     source_file: $ => choice(
@@ -360,13 +367,13 @@ module.exports = grammar({
       choice($.pat_app, $._pat_atom),
     ),
     
-    _pat_atom: $ => choice(
+    _pat_atom: $ => prec(1, choice(
       $._pat_ident,
       $._literal,
       $.pat_unit,
       $.pat_parens,
       $.pat_record,
-    ),
+    )),
     
     pat_unit: _ => seq('(', ')'),
     
@@ -473,7 +480,7 @@ module.exports = grammar({
     
     expr_do: $ => seq('do', $._expr_block),
 
-    expr_try: $ => seq('try', $._expr_block),
+    expr_try: $ => seq('try', $._try_block),
     
     expr_lambda: $ => seq(
       'fn',

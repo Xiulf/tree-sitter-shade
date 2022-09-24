@@ -1966,29 +1966,33 @@
       ]
     },
     "_pat_atom": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_pat_ident"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_literal"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "pat_unit"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "pat_parens"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "pat_record"
-        }
-      ]
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_pat_ident"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_literal"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "pat_unit"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "pat_parens"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "pat_record"
+          }
+        ]
+      }
     },
     "pat_unit": {
       "type": "SEQ",
@@ -2805,7 +2809,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_expr_block"
+          "name": "_try_block"
         }
       ]
     },
@@ -3403,7 +3407,24 @@
       "name": "comment"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "_pat_ident",
+      "path"
+    ],
+    [
+      "pat_unit",
+      "expr_unit"
+    ],
+    [
+      "pat_record",
+      "expr_record"
+    ],
+    [
+      "_pat_record_field",
+      "_expr_record_field"
+    ]
+  ],
   "precedences": [],
   "externals": [
     {

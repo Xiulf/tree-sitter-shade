@@ -1212,6 +1212,10 @@
           "named": true
         },
         {
+          "type": "stmt_bind",
+          "named": true
+        },
+        {
           "type": "stmt_let",
           "named": true
         },
