@@ -347,7 +347,7 @@ module.exports = grammar({
     
     ty_record: $ => seq(
       '{',
-      sepBy1(',', alias($._ty_record_field, $.record_field)),
+      sepBy(',', alias($._ty_record_field, $.record_field)),
       optional(seq('|', $._ty2)),
       '}',
     ),
