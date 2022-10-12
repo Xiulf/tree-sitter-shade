@@ -1925,6 +1925,10 @@
           "named": true
         },
         {
+          "type": "ty_forall",
+          "named": true
+        },
+        {
           "type": "ty_infix",
           "named": true
         },
@@ -1946,6 +1950,10 @@
         },
         {
           "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
           "named": true
         }
       ]
@@ -2612,6 +2620,10 @@
           "named": true
         },
         {
+          "type": "ty_forall",
+          "named": true
+        },
+        {
           "type": "ty_infix",
           "named": true
         },
@@ -2633,6 +2645,10 @@
         },
         {
           "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
           "named": true
         }
       ]

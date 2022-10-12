@@ -348,11 +348,11 @@ module.exports = grammar({
     ty_record: $ => seq(
       '{',
       sepBy(',', alias($._ty_record_field, $.record_field)),
-      optional(seq('|', $._ty2)),
+      optional(seq('|', $._ty)),
       '}',
     ),
     
-    _ty_record_field: $ => seq($.identifier, '::', $._ty2),
+    _ty_record_field: $ => seq($.identifier, '::', $._ty),
     
     _pattern: $ => choice(
       $.pat_infix,

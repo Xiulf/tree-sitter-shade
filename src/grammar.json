@@ -1849,7 +1849,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_ty2"
+                  "name": "_ty"
                 }
               ]
             },
@@ -1877,7 +1877,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_ty2"
+          "name": "_ty"
         }
       ]
     },
