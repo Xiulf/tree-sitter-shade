@@ -21,6 +21,7 @@ module.exports = grammar({
   word: $ => $._lowercase_identifier,
   
   conflicts: $ => [
+    [$._pat_atom, $._expr_atom],
     [$._pat_ident, $.path],
     [$.pat_unit, $.expr_unit],
     [$.pat_record, $.expr_record],
@@ -355,29 +356,58 @@ module.exports = grammar({
     _ty_record_field: $ => seq($.identifier, '::', $._ty),
     
     _pattern: $ => choice(
-      $.pat_infix,
-      $.pat_app,
+      prec(2, $.pat_infix),
+      prec(1, $._lpat),
+    ),
+    
+    _lpat: $ => choice(
       $._pat_atom,
+      $.pat_app,
     ),
     
-    pat_app: $ => seq(field('first', $._pat_atom), repeat1($._pat_atom)),
-    
-    pat_infix: $ => sepBy2(
-      $.operator,
-      choice($.pat_app, $._pat_atom),
+    _nested_pat: $ => choice(
+      $._pattern,
+      $.pat_typed,
     ),
     
-    _pat_atom: $ => prec(1, choice(
+    // _pattern: $ => choice(
+    //   $.pat_infix,
+    //   $.pat_app,
+    //   $._pat_atom,
+    // ),
+
+    pat_app: $ => seq(field('first', $._pat_ident), repeat1($._pat_atom)),
+    
+    // pat_app: $ => seq(field('first', $._pat_atom), repeat1($._pat_atom)),
+
+    pat_infix: $ => seq($._lpat, $.operator, $._pattern),
+    
+    // pat_infix: $ => sepBy2(
+    //   $.operator,
+    //   choice($.pat_app, $._pat_atom),
+    // ),
+    
+    _pat_atom: $ => choice(
       $._pat_ident,
       $._literal,
       $.pat_unit,
       $.pat_parens,
       $.pat_record,
-    )),
+    ),
+    
+    // _pat_atom: $ => prec(1, choice(
+    //   $._pat_ident,
+    //   $._literal,
+    //   $.pat_unit,
+    //   $.pat_parens,
+    //   $.pat_record,
+    // )),
+    
+    pat_typed: $ => seq($._pattern, '::', $._ty),
     
     pat_unit: _ => seq('(', ')'),
     
-    pat_parens: $ => seq('(', $._pattern, ')'),
+    pat_parens: $ => seq('(', $._nested_pat, ')'),
     
     pat_record: $ => seq(
       '{',
@@ -387,7 +417,7 @@ module.exports = grammar({
     ),
     
     _pat_record_field: $ => choice(
-      seq($.identifier, ':', $._pattern),
+      seq($.identifier, ':', $._nested_pat),
       $.identifier,
     ),
     

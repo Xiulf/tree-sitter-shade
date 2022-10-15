@@ -1646,27 +1646,7 @@
         "required": true,
         "types": [
           {
-            "type": "int_literal",
-            "named": true
-          },
-          {
             "type": "pat_identifier",
-            "named": true
-          },
-          {
-            "type": "pat_parens",
-            "named": true
-          },
-          {
-            "type": "pat_record",
-            "named": true
-          },
-          {
-            "type": "pat_unit",
-            "named": true
-          },
-          {
-            "type": "string_literal",
             "named": true
           }
         ]
@@ -1733,6 +1713,10 @@
           "named": true
         },
         {
+          "type": "pat_infix",
+          "named": true
+        },
+        {
           "type": "pat_parens",
           "named": true
         },
@@ -1784,6 +1768,10 @@
           "named": true
         },
         {
+          "type": "pat_typed",
+          "named": true
+        },
+        {
           "type": "pat_unit",
           "named": true
         },
@@ -1804,6 +1792,85 @@
       "types": [
         {
           "type": "record_field",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pat_typed",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "pat_app",
+          "named": true
+        },
+        {
+          "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_infix",
+          "named": true
+        },
+        {
+          "type": "pat_parens",
+          "named": true
+        },
+        {
+          "type": "pat_record",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "ty_app",
+          "named": true
+        },
+        {
+          "type": "ty_forall",
+          "named": true
+        },
+        {
+          "type": "ty_infix",
+          "named": true
+        },
+        {
+          "type": "ty_parens",
+          "named": true
+        },
+        {
+          "type": "ty_path",
+          "named": true
+        },
+        {
+          "type": "ty_record",
+          "named": true
+        },
+        {
+          "type": "ty_row",
+          "named": true
+        },
+        {
+          "type": "ty_unit",
+          "named": true
+        },
+        {
+          "type": "ty_where",
           "named": true
         }
       ]
@@ -1902,6 +1969,10 @@
         },
         {
           "type": "pat_record",
+          "named": true
+        },
+        {
+          "type": "pat_typed",
           "named": true
         },
         {

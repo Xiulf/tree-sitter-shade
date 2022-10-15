@@ -1885,16 +1885,46 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "PREC",
+          "value": 2,
+          "content": {
+            "type": "SYMBOL",
+            "name": "pat_infix"
+          }
+        },
+        {
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SYMBOL",
+            "name": "_lpat"
+          }
+        }
+      ]
+    },
+    "_lpat": {
+      "type": "CHOICE",
+      "members": [
+        {
           "type": "SYMBOL",
-          "name": "pat_infix"
+          "name": "_pat_atom"
         },
         {
           "type": "SYMBOL",
           "name": "pat_app"
+        }
+      ]
+    },
+    "_nested_pat": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_pattern"
         },
         {
           "type": "SYMBOL",
-          "name": "_pat_atom"
+          "name": "pat_typed"
         }
       ]
     },
@@ -1906,7 +1936,7 @@
           "name": "first",
           "content": {
             "type": "SYMBOL",
-            "name": "_pat_atom"
+            "name": "_pat_ident"
           }
         },
         {
@@ -1922,85 +1952,60 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "pat_app"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_pat_atom"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_lpat"
         },
         {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "operator"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "pat_app"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "_pat_atom"
-                  }
-                ]
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "operator"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "operator"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_pattern"
         }
       ]
     },
     "_pat_atom": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_pat_ident"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_literal"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "pat_unit"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "pat_parens"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "pat_record"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_pat_ident"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pat_unit"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pat_parens"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pat_record"
+        }
+      ]
+    },
+    "pat_typed": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_pattern"
+        },
+        {
+          "type": "STRING",
+          "value": "::"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_ty"
+        }
+      ]
     },
     "pat_unit": {
       "type": "SEQ",
@@ -2024,7 +2029,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_pattern"
+          "name": "_nested_pat"
         },
         {
           "type": "STRING",
@@ -2128,7 +2133,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_pattern"
+              "name": "_nested_pat"
             }
           ]
         },
@@ -3416,6 +3421,10 @@
     }
   ],
   "conflicts": [
+    [
+      "_pat_atom",
+      "_expr_atom"
+    ],
     [
       "_pat_ident",
       "path"
