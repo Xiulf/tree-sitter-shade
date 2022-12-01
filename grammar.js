@@ -198,8 +198,17 @@ module.exports = grammar({
     _func_body: $ => seq(
       field('name', $.identifier),
       repeat($._pat_atom),
-      '=',
-      alias($._expr_block, $.expr_do),
+      $._func_value,
+    ),
+    
+    _func_value: $ => choice(
+      seq('=', alias($._expr_block, $.expr_do)),
+      seq(
+        repeat1(choice(
+          seq('if', $._expression, '=', $._expression3),
+        )),
+        optional(seq('else', '=', $._expression)),
+      ),
     ),
     
     const: $ => choice(
