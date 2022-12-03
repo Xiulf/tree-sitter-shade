@@ -31,10 +31,7 @@ module.exports = grammar({
   rules: {
     source_file: $ => choice(
       $.empty_file,
-      seq(
-        repeat($.attribute),
-        $.module,
-      ),
+      seq($.item),
     ),
     
     attribute: $ => seq(

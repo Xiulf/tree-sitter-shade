@@ -2091,19 +2091,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "attribute",
-          "named": true
-        },
         {
           "type": "empty_file",
           "named": true
         },
         {
-          "type": "module",
+          "type": "item",
           "named": true
         }
       ]
