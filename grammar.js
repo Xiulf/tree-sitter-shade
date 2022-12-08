@@ -579,7 +579,7 @@ module.exports = grammar({
     
     stmt_let: $ => seq(
       'let',
-      $._pattern,
+      $._nested_pat,
       '=',
       $._expression,
     ),

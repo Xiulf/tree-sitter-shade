@@ -2423,6 +2423,10 @@
           "named": true
         },
         {
+          "type": "pat_typed",
+          "named": true
+        },
+        {
           "type": "pat_unit",
           "named": true
         },

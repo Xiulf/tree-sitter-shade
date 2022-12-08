@@ -3286,7 +3286,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_pattern"
+          "name": "_nested_pat"
         },
         {
           "type": "STRING",
