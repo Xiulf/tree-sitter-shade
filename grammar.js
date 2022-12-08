@@ -31,9 +31,10 @@ module.exports = grammar({
   rules: {
     source_file: $ => choice(
       $.empty_file,
+      $.stmt_let,
       seq($.item),
     ),
-    
+   
     attribute: $ => seq(
       '@',
       $._attr_body,

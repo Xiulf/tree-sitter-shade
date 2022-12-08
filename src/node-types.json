@@ -2101,6 +2101,10 @@
         {
           "type": "item",
           "named": true
+        },
+        {
+          "type": "stmt_let",
+          "named": true
         }
       ]
     }
