@@ -526,14 +526,16 @@ module.exports = grammar({
       $._expression,
     ),
     
-    expr_if: $ => seq(
+    expr_if: $ => prec.left(seq(
       'if',
       $._expression,
       'then',
       $._expression,
-      'else',
-      $._expression,
-    ),
+      optional(seq(
+        'else',
+        $._expression,
+      )),
+    )),
     
     expr_case: $ => seq(
       'case',
