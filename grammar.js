@@ -609,7 +609,7 @@ module.exports = grammar({
     path: $ => seq(
       repeat(seq(
         alias($._uppercase_identifier, $.module_name),
-        token.immediate('.')
+        token.immediate(':')
       )),
       field('last', $.identifier)
     ),
