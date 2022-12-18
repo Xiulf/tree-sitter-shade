@@ -39,7 +39,7 @@
 
 ((path last: (identifier) @constructor)
   (#match? @constructor "^[A-Z]"))
-(path "." last: (identifier) @function)
+(path ":" last: (identifier) @function)
 (path last: (identifier) @identifier)
 (path (module_name) @namespace)
 

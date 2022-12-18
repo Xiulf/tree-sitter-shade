@@ -1,11 +1,31 @@
-module Main =
+module Main:Test =
 
-import Core
-import Js.Console
-import Js.DOM
+import Prim
+import Intrinsics (unsafe, transmute, ($))
+
+
+type Option a =
+    | None
+    | Some a
 
 @main
 main =
-    let a = createElement "a" :: HTMLAnchorElement
+    let a = None :: Option Int32
+    let r = unwrap_or a 0
     
-    print a.className a.href :: ()
+    puts "test\0"
+    ExitCode r
+
+
+unwrap_or :: Option Int32 -> Int32 -> Int32
+unwrap_or (Some x) _ = x
+unwrap_or _        x = x
+
+
+module C =
+    foreign puts :: Ptr Byte -> Int32 where Unsafe
+
+puts :: Str -> Int32
+puts s =
+    let ptr, _ = unsafe (transmute s) :: _, Uint
+    unsafe (C:puts ptr)

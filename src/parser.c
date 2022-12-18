@@ -123353,17 +123353,17 @@ static const TSParseActionEntry ts_parse_actions[] = {
 #ifdef __cplusplus
 extern "C" {
 #endif
-void *tree_sitter_shade_external_scanner_create(void);
-void tree_sitter_shade_external_scanner_destroy(void *);
-bool tree_sitter_shade_external_scanner_scan(void *, TSLexer *, const bool *);
-unsigned tree_sitter_shade_external_scanner_serialize(void *, char *);
-void tree_sitter_shade_external_scanner_deserialize(void *, const char *, unsigned);
+void *tree_sitter_fi_external_scanner_create(void);
+void tree_sitter_fi_external_scanner_destroy(void *);
+bool tree_sitter_fi_external_scanner_scan(void *, TSLexer *, const bool *);
+unsigned tree_sitter_fi_external_scanner_serialize(void *, char *);
+void tree_sitter_fi_external_scanner_deserialize(void *, const char *, unsigned);
 
 #ifdef _WIN32
 #define extern __declspec(dllexport)
 #endif
 
-extern const TSLanguage *tree_sitter_shade(void) {
+extern const TSLanguage *tree_sitter_fi(void) {
   static const TSLanguage language = {
     .version = LANGUAGE_VERSION,
     .symbol_count = SYMBOL_COUNT,
@@ -123394,11 +123394,11 @@ extern const TSLanguage *tree_sitter_shade(void) {
     .external_scanner = {
       &ts_external_scanner_states[0][0],
       ts_external_scanner_symbol_map,
-      tree_sitter_shade_external_scanner_create,
-      tree_sitter_shade_external_scanner_destroy,
-      tree_sitter_shade_external_scanner_scan,
-      tree_sitter_shade_external_scanner_serialize,
-      tree_sitter_shade_external_scanner_deserialize,
+      tree_sitter_fi_external_scanner_create,
+      tree_sitter_fi_external_scanner_destroy,
+      tree_sitter_fi_external_scanner_scan,
+      tree_sitter_fi_external_scanner_serialize,
+      tree_sitter_fi_external_scanner_deserialize,
     },
   };
   return &language;

@@ -1,7 +1,7 @@
 {
-  "name": "tree-sitter-shade",
+  "name": "tree-sitter-fi",
   "version": "0.0.1",
-  "description": "shade grammar for tree-sitter",
+  "description": "fi grammar for tree-sitter",
   "main": "bindings/node",
   "keywords": [
     "parsing",
@@ -19,9 +19,9 @@
   
   "tree-sitter": [
     {
-      "scope": "source.shade",
+      "scope": "source.fi",
       "file-types": [
-        "shade"
+        "fi"
       ]
     }
   ]
