@@ -431,6 +431,7 @@ module.exports = grammar({
     _expression: $ => prec(4, choice(
       $.expr_typed,
       $.expr_infix,
+      $.expr_method,
       $.expr_app,
       $._expr_atom2,
     )),
@@ -452,11 +453,11 @@ module.exports = grammar({
     expr_app: $ => seq(field('first', $._expr_atom), repeat($._expr_atom), $._expr_atom2),
     _expr_app2: $ => seq(field('first', $._expr_atom), repeat1($._expr_atom)),
     
-    expr_field: $ => seq(
+    expr_field: $ => prec(1, seq(
       choice($.path, $.expr_field, $.expr_parens),
-      '.',
+      token.immediate('.'),
       $.identifier,
-    ),
+    )),
     
     expr_infix: $ => prec(2, sepBy2(
       field('operator', choice(
@@ -472,6 +473,12 @@ module.exports = grammar({
         $.operator,
       )),
       choice(alias($._expr_app2, $.expr_app), $._expr_atom),
+    )),
+    
+    expr_method: $ => prec(2, seq(
+      choice($.expr_app, $._expr_atom, $.expr_field, $.expr_method),
+      '.',
+      $.identifier
     )),
     
     _expr_atom: $ => choice(

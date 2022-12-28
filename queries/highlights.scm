@@ -28,6 +28,7 @@
 
 (expr_app first: (expr_field (identifier) @function))
 (expr_field (identifier) @property)
+(expr_method (identifier) @function)
 
 ((expr_app first: (path last: (identifier) @constructor))
   (#match? @constructor "^[A-Z]"))
@@ -36,6 +37,7 @@
 ((ty_path last: (identifier) @type)
   (#match? @type "^[A-Z]"))
 (ty_path last: (identifier) @identifier)
+(ty_path (module_name) @namespace)
 
 ((path last: (identifier) @constructor)
   (#match? @constructor "^[A-Z]"))

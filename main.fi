@@ -1,0 +1,18 @@
+module Test =
+
+import Core
+import Data:Range ((..))
+
+
+@main
+main :: ExitCode
+main =
+    let x = 8 .fib
+    let y = a.b .c
+
+    ExitCode $ x
+
+
+fib :: forall i. i -> i where Integer i
+fib n if n < 2 = n
+      else     = fib (n - 2) + fib (n - 1)

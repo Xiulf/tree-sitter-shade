@@ -2229,6 +2229,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "expr_method"
+          },
+          {
+            "type": "SYMBOL",
             "name": "expr_app"
           },
           {
@@ -2357,34 +2361,41 @@
       ]
     },
     "expr_field": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "path"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "expr_field"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "expr_parens"
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "path"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expr_field"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expr_parens"
+              }
+            ]
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "."
             }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "."
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        }
-      ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        ]
+      }
     },
     "expr_infix": {
       "type": "PREC",
@@ -2614,6 +2625,44 @@
                 "type": "BLANK"
               }
             ]
+          }
+        ]
+      }
+    },
+    "expr_method": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "expr_app"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_expr_atom"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expr_field"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expr_method"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "."
+          },
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
           }
         ]
       }

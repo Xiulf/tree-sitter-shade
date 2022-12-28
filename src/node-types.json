@@ -110,6 +110,10 @@
           "named": true
         },
         {
+          "type": "expr_method",
+          "named": true
+        },
+        {
           "type": "expr_parens",
           "named": true
         },
@@ -235,6 +239,10 @@
         },
         {
           "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_method",
           "named": true
         },
         {
@@ -570,6 +578,10 @@
           "named": true
         },
         {
+          "type": "expr_method",
+          "named": true
+        },
+        {
           "type": "expr_parens",
           "named": true
         },
@@ -653,6 +665,10 @@
           "named": true
         },
         {
+          "type": "expr_method",
+          "named": true
+        },
+        {
           "type": "expr_parens",
           "named": true
         },
@@ -729,6 +745,10 @@
         },
         {
           "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_method",
           "named": true
         },
         {
@@ -839,6 +859,10 @@
         },
         {
           "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_method",
           "named": true
         },
         {
@@ -991,6 +1015,10 @@
           "named": true
         },
         {
+          "type": "expr_method",
+          "named": true
+        },
+        {
           "type": "expr_parens",
           "named": true
         },
@@ -1046,6 +1074,65 @@
     }
   },
   {
+    "type": "expr_method",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
+          "named": true
+        },
+        {
+          "type": "expr_field",
+          "named": true
+        },
+        {
+          "type": "expr_method",
+          "named": true
+        },
+        {
+          "type": "expr_parens",
+          "named": true
+        },
+        {
+          "type": "expr_record",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "path",
+          "named": true
+        },
+        {
+          "type": "recur",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expr_parens",
     "named": true,
     "fields": {},
@@ -1083,6 +1170,10 @@
         },
         {
           "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_method",
           "named": true
         },
         {
@@ -1177,6 +1268,10 @@
         },
         {
           "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_method",
           "named": true
         },
         {
@@ -1394,6 +1489,10 @@
         },
         {
           "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_method",
           "named": true
         },
         {
@@ -2161,6 +2260,10 @@
           "named": true
         },
         {
+          "type": "expr_method",
+          "named": true
+        },
+        {
           "type": "expr_parens",
           "named": true
         },
@@ -2276,6 +2379,10 @@
           "named": true
         },
         {
+          "type": "expr_method",
+          "named": true
+        },
+        {
           "type": "expr_parens",
           "named": true
         },
@@ -2376,6 +2483,10 @@
         },
         {
           "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_method",
           "named": true
         },
         {
