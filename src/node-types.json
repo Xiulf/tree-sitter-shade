@@ -444,6 +444,10 @@
             "named": true
           },
           {
+            "type": "expr_method",
+            "named": true
+          },
+          {
             "type": "expr_parens",
             "named": true
           },

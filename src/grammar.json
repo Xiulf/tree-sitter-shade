@@ -2317,46 +2317,67 @@
       ]
     },
     "expr_app": {
-      "type": "SEQ",
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "first",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expr_app_base"
+            }
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expr_atom"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expr_atom2"
+          }
+        ]
+      }
+    },
+    "_expr_app2": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "first",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expr_app_base"
+            }
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expr_atom"
+            }
+          }
+        ]
+      }
+    },
+    "_expr_app_base": {
+      "type": "CHOICE",
       "members": [
         {
-          "type": "FIELD",
-          "name": "first",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expr_atom"
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expr_atom"
-          }
+          "type": "SYMBOL",
+          "name": "_expr_atom"
         },
         {
           "type": "SYMBOL",
-          "name": "_expr_atom2"
-        }
-      ]
-    },
-    "_expr_app2": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "first",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expr_atom"
-          }
-        },
-        {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expr_atom"
-          }
+          "name": "expr_method"
         }
       ]
     },
@@ -3576,6 +3597,10 @@
     [
       "_pat_record_field",
       "_expr_record_field"
+    ],
+    [
+      "_expr_app_base",
+      "_expr_infix2"
     ]
   ],
   "precedences": [],

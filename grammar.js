@@ -26,6 +26,7 @@ module.exports = grammar({
     [$.pat_unit, $.expr_unit],
     [$.pat_record, $.expr_record],
     [$._pat_record_field, $._expr_record_field],
+    [$._expr_app_base, $._expr_infix2],
   ],
 
   rules: {
@@ -450,8 +451,13 @@ module.exports = grammar({
     
     expr_typed: $ => seq($._expression2, '::', $._ty),
     
-    expr_app: $ => seq(field('first', $._expr_atom), repeat($._expr_atom), $._expr_atom2),
-    _expr_app2: $ => seq(field('first', $._expr_atom), repeat1($._expr_atom)),
+    expr_app: $ => prec.left(seq(field('first', $._expr_app_base), repeat($._expr_atom), $._expr_atom2)),
+    _expr_app2: $ => prec.left(seq(field('first', $._expr_app_base), repeat1($._expr_atom))),
+
+    _expr_app_base: $ => choice(
+      $._expr_atom,
+      $.expr_method,
+    ),
     
     expr_field: $ => prec(1, seq(
       choice($.path, $.expr_field, $.expr_parens),
