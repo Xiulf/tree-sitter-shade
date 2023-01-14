@@ -852,6 +852,13 @@
           }
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_typevar"
+          }
+        },
+        {
           "type": "STRING",
           "value": "::"
         },
@@ -996,6 +1003,13 @@
           }
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_typevar"
+          }
+        },
+        {
           "type": "STRING",
           "value": "::"
         },
@@ -1068,6 +1082,13 @@
           "content": {
             "type": "SYMBOL",
             "name": "identifier"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_typevar"
           }
         },
         {
@@ -3585,6 +3606,10 @@
     [
       "_pat_ident",
       "path"
+    ],
+    [
+      "_pat_ident",
+      "_typevar"
     ],
     [
       "pat_unit",

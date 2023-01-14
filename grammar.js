@@ -23,6 +23,7 @@ module.exports = grammar({
   conflicts: $ => [
     [$._pat_atom, $._expr_atom],
     [$._pat_ident, $.path],
+    [$._pat_ident, $._typevar],
     [$.pat_unit, $.expr_unit],
     [$.pat_record, $.expr_record],
     [$._pat_record_field, $._expr_record_field],
@@ -190,6 +191,7 @@ module.exports = grammar({
     _func_type: $ => seq(
       optional('foreign'),
       field('name', $.identifier),
+      repeat($._typevar),
       '::',
       $._ty,
     ),
@@ -218,6 +220,7 @@ module.exports = grammar({
     _const_type: $ => seq(
       'const',
       field('name', $.identifier),
+      repeat($._typevar),
       '::',
       $._ty,
     ),
@@ -238,6 +241,7 @@ module.exports = grammar({
       optional('foreign'),
       'static',
       field('name', $.identifier),
+      repeat($._typevar),
       '::',
       $._ty,
     ),

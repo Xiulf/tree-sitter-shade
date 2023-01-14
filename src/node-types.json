@@ -206,7 +206,7 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -315,6 +315,10 @@
         },
         {
           "type": "ty_where",
+          "named": true
+        },
+        {
+          "type": "typevar",
           "named": true
         }
       ]
@@ -1586,6 +1590,10 @@
         {
           "type": "ty_where",
           "named": true
+        },
+        {
+          "type": "typevar",
+          "named": true
         }
       ]
     }
@@ -2228,7 +2236,7 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -2337,6 +2345,10 @@
         },
         {
           "type": "ty_where",
+          "named": true
+        },
+        {
+          "type": "typevar",
           "named": true
         }
       ]
