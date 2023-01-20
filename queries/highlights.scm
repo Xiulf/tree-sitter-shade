@@ -28,7 +28,7 @@
 
 (expr_app first: (expr_field (identifier) @function))
 (expr_field (identifier) @property)
-(expr_method (identifier) @function)
+; (expr_method (identifier) @function)
 
 ((expr_app first: (path last: (identifier) @constructor))
   (#match? @constructor "^[A-Z]"))
