@@ -488,7 +488,7 @@ module.exports = grammar({
     expr_method: $ => prec(2, seq(
       choice($.expr_app, $._expr_atom, $.expr_field, $.expr_method),
       '.',
-      $.identifier
+      $.path
     )),
     
     _expr_atom: $ => choice(
