@@ -12,156 +12,26 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "lit_string",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "case_arm",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "case_value",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "pat_app",
-          "named": true
-        },
-        {
-          "type": "pat_identifier",
-          "named": true
-        },
-        {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_unit",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "case_value",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr_app",
-          "named": true
-        },
-        {
-          "type": "expr_array",
-          "named": true
-        },
-        {
-          "type": "expr_case",
-          "named": true
-        },
-        {
-          "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
-          "named": true
-        },
-        {
-          "type": "expr_if",
-          "named": true
-        },
-        {
-          "type": "expr_infix",
-          "named": true
-        },
-        {
-          "type": "expr_lambda",
-          "named": true
-        },
-        {
-          "type": "expr_method",
-          "named": true
-        },
-        {
-          "type": "expr_parens",
-          "named": true
-        },
-        {
-          "type": "expr_record",
-          "named": true
-        },
-        {
-          "type": "expr_try",
-          "named": true
-        },
-        {
-          "type": "expr_typed",
-          "named": true
-        },
-        {
-          "type": "expr_unit",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "path",
-          "named": true
-        },
-        {
-          "type": "recur",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "class",
+    "type": "constraint",
     "named": true,
     "fields": {
-      "name": {
+      "trait": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "type_path",
             "named": true
           }
         ]
@@ -172,153 +42,31 @@
       "required": false,
       "types": [
         {
-          "type": "func",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "fundep",
+          "type": "type_fn",
           "named": true
         },
         {
-          "type": "typevar",
+          "type": "type_infix",
           "named": true
         },
         {
-          "type": "where_clause",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "const",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "expr_app",
+          "type": "type_path",
           "named": true
         },
         {
-          "type": "expr_array",
+          "type": "type_ref",
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "type_unit",
           "named": true
         },
         {
-          "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
-          "named": true
-        },
-        {
-          "type": "expr_if",
-          "named": true
-        },
-        {
-          "type": "expr_infix",
-          "named": true
-        },
-        {
-          "type": "expr_lambda",
-          "named": true
-        },
-        {
-          "type": "expr_method",
-          "named": true
-        },
-        {
-          "type": "expr_parens",
-          "named": true
-        },
-        {
-          "type": "expr_record",
-          "named": true
-        },
-        {
-          "type": "expr_try",
-          "named": true
-        },
-        {
-          "type": "expr_typed",
-          "named": true
-        },
-        {
-          "type": "expr_unit",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "path",
-          "named": true
-        },
-        {
-          "type": "recur",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_forall",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
-          "named": true
-        },
-        {
-          "type": "typevar",
+          "type": "type_var",
           "named": true
         }
       ]
@@ -327,48 +75,45 @@
   {
     "type": "ctor",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "int_literal",
+          "type": "constant",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "ty_parens",
+          "type": "type_fn",
           "named": true
         },
         {
-          "type": "ty_path",
+          "type": "type_infix",
           "named": true
         },
         {
-          "type": "ty_record",
+          "type": "type_name",
           "named": true
         },
         {
-          "type": "ty_row",
+          "type": "type_path",
           "named": true
         },
         {
-          "type": "ty_unit",
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
@@ -379,53 +124,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "export_group",
+          "type": "constant",
           "named": true
         },
         {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "path",
           "named": true
         },
         {
           "type": "symbol",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "export_group",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
+        },
         {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "exports",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "export",
+          "type": "type_name",
           "named": true
         }
       ]
@@ -436,27 +151,67 @@
     "named": true,
     "fields": {
       "first": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "expr_app",
+            "named": true
+          },
           {
             "type": "expr_array",
             "named": true
           },
           {
-            "type": "expr_field",
+            "type": "expr_block",
             "named": true
           },
           {
-            "type": "expr_method",
+            "type": "expr_do",
             "named": true
           },
           {
-            "type": "expr_parens",
+            "type": "expr_if",
             "named": true
           },
           {
-            "type": "expr_record",
+            "type": "expr_infix",
+            "named": true
+          },
+          {
+            "type": "expr_lambda",
+            "named": true
+          },
+          {
+            "type": "expr_match",
+            "named": true
+          },
+          {
+            "type": "expr_path",
+            "named": true
+          },
+          {
+            "type": "expr_pipe",
+            "named": true
+          },
+          {
+            "type": "expr_recur",
+            "named": true
+          },
+          {
+            "type": "expr_return",
             "named": true
           },
           {
@@ -464,19 +219,39 @@
             "named": true
           },
           {
-            "type": "int_literal",
+            "type": "lit_int",
             "named": true
           },
           {
-            "type": "path",
+            "type": "lit_string",
             "named": true
           },
           {
-            "type": "recur",
+            "type": "type_app",
             "named": true
           },
           {
-            "type": "string_literal",
+            "type": "type_fn",
+            "named": true
+          },
+          {
+            "type": "type_infix",
+            "named": true
+          },
+          {
+            "type": "type_path",
+            "named": true
+          },
+          {
+            "type": "type_ref",
+            "named": true
+          },
+          {
+            "type": "type_unit",
+            "named": true
+          },
+          {
+            "type": "type_var",
             "named": true
           }
         ]
@@ -487,11 +262,15 @@
       "required": true,
       "types": [
         {
+          "type": "expr_app",
+          "named": true
+        },
+        {
           "type": "expr_array",
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
@@ -499,11 +278,11 @@
           "named": true
         },
         {
-          "type": "expr_field",
+          "type": "expr_if",
           "named": true
         },
         {
-          "type": "expr_if",
+          "type": "expr_infix",
           "named": true
         },
         {
@@ -511,15 +290,23 @@
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_pipe",
+          "named": true
+        },
+        {
+          "type": "expr_recur",
+          "named": true
+        },
+        {
+          "type": "expr_return",
           "named": true
         },
         {
@@ -527,19 +314,39 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
@@ -562,15 +369,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -586,23 +389,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -610,36 +413,52 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "expr_case",
+    "type": "expr_block",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
-        {
-          "type": "case_arm",
-          "named": true
-        },
         {
           "type": "expr_app",
           "named": true
@@ -649,15 +468,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -673,23 +488,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -697,19 +512,51 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "stmt_bind",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "stmt_discard",
+          "named": true
+        },
+        {
+          "type": "stmt_let",
+          "named": true
+        },
+        {
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
@@ -732,15 +579,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -756,23 +599,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -780,15 +623,19 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "stmt_bind",
+          "named": true
+        },
+        {
+          "type": "stmt_discard",
           "named": true
         },
         {
@@ -796,34 +643,31 @@
           "named": true
         },
         {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expr_field",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr_field",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "type_fn",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "type_infix",
           "named": true
         },
         {
-          "type": "path",
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
@@ -846,15 +690,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -870,23 +710,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -894,19 +734,39 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
@@ -915,26 +775,7 @@
   {
     "type": "expr_infix",
     "named": true,
-    "fields": {
-      "operator": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "`",
-            "named": false
-          },
-          {
-            "type": "operator",
-            "named": true
-          },
-          {
-            "type": "path",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": true,
@@ -948,15 +789,43 @@
           "named": true
         },
         {
-          "type": "expr_field",
+          "type": "expr_block",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_do",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_if",
+          "named": true
+        },
+        {
+          "type": "expr_infix",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_match",
+          "named": true
+        },
+        {
+          "type": "expr_path",
+          "named": true
+        },
+        {
+          "type": "expr_pipe",
+          "named": true
+        },
+        {
+          "type": "expr_recur",
+          "named": true
+        },
+        {
+          "type": "expr_return",
           "named": true
         },
         {
@@ -964,19 +833,43 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "operator",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
@@ -999,15 +892,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -1023,23 +912,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -1047,7 +936,11 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
+          "named": true
+        },
+        {
+          "type": "lit_string",
           "named": true
         },
         {
@@ -1055,11 +948,7 @@
           "named": true
         },
         {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
+          "type": "pat_path",
           "named": true
         },
         {
@@ -1067,22 +956,42 @@
           "named": true
         },
         {
-          "type": "path",
+          "type": "pat_wildcard",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "expr_method",
+    "type": "expr_match",
     "named": true,
     "fields": {},
     "children": {
@@ -1098,19 +1007,43 @@
           "named": true
         },
         {
-          "type": "expr_field",
+          "type": "expr_block",
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_do",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_if",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_infix",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_match",
+          "named": true
+        },
+        {
+          "type": "expr_path",
+          "named": true
+        },
+        {
+          "type": "expr_pipe",
+          "named": true
+        },
+        {
+          "type": "expr_recur",
+          "named": true
+        },
+        {
+          "type": "expr_return",
           "named": true
         },
         {
@@ -1118,26 +1051,50 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "match_arm",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "expr_parens",
+    "type": "expr_path",
     "named": true,
     "fields": {},
     "children": {
@@ -1145,6 +1102,32 @@
       "required": true,
       "types": [
         {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expr_pipe",
+    "named": true,
+    "fields": {
+      "method": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "path",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
           "type": "expr_app",
           "named": true
         },
@@ -1153,15 +1136,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -1177,121 +1156,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
-          "named": true
-        },
-        {
-          "type": "expr_unit",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "path",
-          "named": true
-        },
-        {
-          "type": "recur",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expr_record",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "record_field",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expr_try",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "expr_app",
-          "named": true
-        },
-        {
-          "type": "expr_array",
-          "named": true
-        },
-        {
-          "type": "expr_case",
-          "named": true
-        },
-        {
-          "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
-          "named": true
-        },
-        {
-          "type": "expr_if",
-          "named": true
-        },
-        {
-          "type": "expr_infix",
-          "named": true
-        },
-        {
-          "type": "expr_lambda",
-          "named": true
-        },
-        {
-          "type": "expr_method",
-          "named": true
-        },
-        {
-          "type": "expr_parens",
-          "named": true
-        },
-        {
-          "type": "expr_record",
-          "named": true
-        },
-        {
-          "type": "expr_try",
-          "named": true
-        },
-        {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -1299,34 +1180,46 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "stmt_bind",
+          "type": "type_fn",
           "named": true
         },
         {
-          "type": "stmt_let",
+          "type": "type_infix",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "expr_typed",
+    "type": "expr_return",
     "named": true,
     "fields": {},
     "children": {
@@ -1342,7 +1235,15 @@
           "named": true
         },
         {
-          "type": "expr_field",
+          "type": "expr_block",
+          "named": true
+        },
+        {
+          "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_if",
           "named": true
         },
         {
@@ -1350,11 +1251,27 @@
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_lambda",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_match",
+          "named": true
+        },
+        {
+          "type": "expr_path",
+          "named": true
+        },
+        {
+          "type": "expr_pipe",
+          "named": true
+        },
+        {
+          "type": "expr_recur",
+          "named": true
+        },
+        {
+          "type": "expr_return",
           "named": true
         },
         {
@@ -1362,55 +1279,39 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
-          "type": "path",
+          "type": "lit_string",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
           "named": true
         },
         {
-          "type": "ty_app",
+          "type": "type_infix",
           "named": true
         },
         {
-          "type": "ty_forall",
+          "type": "type_path",
           "named": true
         },
         {
-          "type": "ty_infix",
+          "type": "type_ref",
           "named": true
         },
         {
-          "type": "ty_parens",
+          "type": "type_unit",
           "named": true
         },
         {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
+          "type": "type_var",
           "named": true
         }
       ]
@@ -1422,7 +1323,7 @@
     "fields": {}
   },
   {
-    "type": "fixity",
+    "type": "fixity_item",
     "named": true,
     "fields": {},
     "children": {
@@ -1430,7 +1331,7 @@
       "required": true,
       "types": [
         {
-          "type": "int_literal",
+          "type": "lit_int",
           "named": true
         },
         {
@@ -1445,15 +1346,15 @@
     }
   },
   {
-    "type": "func",
+    "type": "impl_item",
     "named": true,
     "fields": {
-      "name": {
+      "trait": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "type_path",
             "named": true
           }
         ]
@@ -1461,7 +1362,135 @@
     },
     "children": {
       "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
+          "named": true
+        },
+        {
+          "type": "value_item",
+          "named": true
+        },
+        {
+          "type": "where_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "import_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "imported_item",
+          "named": true
+        },
+        {
+          "type": "module_name",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "imported_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "lit_string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
       "required": false,
+      "types": [
+        {
+          "type": "string_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "match_arm",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "expr_app",
@@ -1472,15 +1501,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -1496,23 +1521,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -1520,7 +1545,15 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
+          "named": true
+        },
+        {
+          "type": "lit_string",
+          "named": true
+        },
+        {
+          "type": "pat_app",
           "named": true
         },
         {
@@ -1528,11 +1561,11 @@
           "named": true
         },
         {
-          "type": "pat_parens",
+          "type": "pat_infix",
           "named": true
         },
         {
-          "type": "pat_record",
+          "type": "pat_path",
           "named": true
         },
         {
@@ -1540,129 +1573,42 @@
           "named": true
         },
         {
-          "type": "path",
+          "type": "pat_wildcard",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
           "named": true
         },
         {
-          "type": "ty_app",
+          "type": "type_infix",
           "named": true
         },
         {
-          "type": "ty_forall",
+          "type": "type_path",
           "named": true
         },
         {
-          "type": "ty_infix",
+          "type": "type_ref",
           "named": true
         },
         {
-          "type": "ty_parens",
+          "type": "type_unit",
           "named": true
         },
         {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
-          "named": true
-        },
-        {
-          "type": "typevar",
+          "type": "type_var",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "fundep",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "identifier",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "import",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "import_item",
-          "named": true
-        },
-        {
-          "type": "path",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "import_item",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "int_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "item",
+    "type": "module_item",
     "named": true,
     "fields": {},
     "children": {
@@ -1674,127 +1620,69 @@
           "named": true
         },
         {
-          "type": "class",
+          "type": "export",
           "named": true
         },
         {
-          "type": "const",
+          "type": "fixity_item",
           "named": true
         },
         {
-          "type": "fixity",
+          "type": "impl_item",
           "named": true
         },
         {
-          "type": "func",
+          "type": "import_item",
           "named": true
         },
         {
-          "type": "import",
+          "type": "module_item",
           "named": true
         },
         {
-          "type": "member",
+          "type": "module_name",
           "named": true
         },
         {
-          "type": "module",
+          "type": "trait_item",
           "named": true
         },
         {
-          "type": "static",
+          "type": "type_item",
           "named": true
         },
         {
-          "type": "type",
+          "type": "value_item",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "member",
+    "type": "module_name",
     "named": true,
-    "fields": {
-      "class": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "ty_path",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "func",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "where_clause",
+          "type": "type_name",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "module",
+    "type": "operator",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "path",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
-          "type": "exports",
-          "named": true
-        },
-        {
-          "type": "item",
+          "type": "path",
           "named": true
         }
       ]
@@ -1809,7 +1697,7 @@
         "required": true,
         "types": [
           {
-            "type": "pat_identifier",
+            "type": "pat_path",
             "named": true
           }
         ]
@@ -1820,7 +1708,11 @@
       "required": true,
       "types": [
         {
-          "type": "int_literal",
+          "type": "lit_int",
+          "named": true
+        },
+        {
+          "type": "lit_string",
           "named": true
         },
         {
@@ -1828,11 +1720,7 @@
           "named": true
         },
         {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
+          "type": "pat_path",
           "named": true
         },
         {
@@ -1840,7 +1728,7 @@
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "pat_wildcard",
           "named": true
         }
       ]
@@ -1849,7 +1737,17 @@
   {
     "type": "pat_identifier",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "pat_infix",
@@ -1860,7 +1758,11 @@
       "required": true,
       "types": [
         {
-          "type": "int_literal",
+          "type": "lit_int",
+          "named": true
+        },
+        {
+          "type": "lit_string",
           "named": true
         },
         {
@@ -1876,15 +1778,7 @@
           "named": true
         },
         {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
+          "type": "pat_path",
           "named": true
         },
         {
@@ -1892,148 +1786,33 @@
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "pat_wildcard",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "pat_parens",
+    "type": "pat_path",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "pat_app",
-          "named": true
-        },
-        {
-          "type": "pat_identifier",
-          "named": true
-        },
-        {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_typed",
-          "named": true
-        },
-        {
-          "type": "pat_unit",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "pat_record",
-    "named": true,
-    "fields": {},
+    "fields": {
+      "last": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_name",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "record_field",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "pat_typed",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "pat_app",
-          "named": true
-        },
-        {
-          "type": "pat_identifier",
-          "named": true
-        },
-        {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_unit",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_forall",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
+          "type": "type_name",
           "named": true
         }
       ]
@@ -2053,7 +1832,19 @@
         "required": true,
         "types": [
           {
+            "type": "constant",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "type_name",
             "named": true
           }
         ]
@@ -2064,130 +1855,7 @@
       "required": false,
       "types": [
         {
-          "type": "module_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "record_field",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr_app",
-          "named": true
-        },
-        {
-          "type": "expr_array",
-          "named": true
-        },
-        {
-          "type": "expr_field",
-          "named": true
-        },
-        {
-          "type": "expr_infix",
-          "named": true
-        },
-        {
-          "type": "expr_parens",
-          "named": true
-        },
-        {
-          "type": "expr_record",
-          "named": true
-        },
-        {
-          "type": "expr_unit",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "pat_app",
-          "named": true
-        },
-        {
-          "type": "pat_identifier",
-          "named": true
-        },
-        {
-          "type": "pat_infix",
-          "named": true
-        },
-        {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_typed",
-          "named": true
-        },
-        {
-          "type": "pat_unit",
-          "named": true
-        },
-        {
-          "type": "path",
-          "named": true
-        },
-        {
-          "type": "recur",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_forall",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
+          "type": "type_name",
           "named": true
         }
       ]
@@ -2198,153 +1866,39 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "empty_file",
-          "named": true
-        },
-        {
-          "type": "item",
-          "named": true
-        },
-        {
-          "type": "stmt_let",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "static",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "expr_app",
+          "type": "attribute",
           "named": true
         },
         {
-          "type": "expr_array",
+          "type": "fixity_item",
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "impl_item",
           "named": true
         },
         {
-          "type": "expr_do",
+          "type": "import_item",
           "named": true
         },
         {
-          "type": "expr_field",
+          "type": "module_item",
           "named": true
         },
         {
-          "type": "expr_if",
+          "type": "trait_item",
           "named": true
         },
         {
-          "type": "expr_infix",
+          "type": "type_item",
           "named": true
         },
         {
-          "type": "expr_lambda",
-          "named": true
-        },
-        {
-          "type": "expr_method",
-          "named": true
-        },
-        {
-          "type": "expr_parens",
-          "named": true
-        },
-        {
-          "type": "expr_record",
-          "named": true
-        },
-        {
-          "type": "expr_try",
-          "named": true
-        },
-        {
-          "type": "expr_typed",
-          "named": true
-        },
-        {
-          "type": "expr_unit",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "path",
-          "named": true
-        },
-        {
-          "type": "recur",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_forall",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
-          "named": true
-        },
-        {
-          "type": "typevar",
+          "type": "value_item",
           "named": true
         }
       ]
@@ -2367,15 +1921,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -2391,23 +1941,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -2415,7 +1965,11 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
+          "named": true
+        },
+        {
+          "type": "lit_string",
           "named": true
         },
         {
@@ -2431,11 +1985,7 @@
           "named": true
         },
         {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
+          "type": "pat_path",
           "named": true
         },
         {
@@ -2443,15 +1993,134 @@
           "named": true
         },
         {
-          "type": "path",
+          "type": "pat_wildcard",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stmt_discard",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
+          "named": true
+        },
+        {
+          "type": "expr_block",
+          "named": true
+        },
+        {
+          "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_if",
+          "named": true
+        },
+        {
+          "type": "expr_infix",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_match",
+          "named": true
+        },
+        {
+          "type": "expr_path",
+          "named": true
+        },
+        {
+          "type": "expr_pipe",
+          "named": true
+        },
+        {
+          "type": "expr_recur",
+          "named": true
+        },
+        {
+          "type": "expr_return",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
+          "type": "lit_int",
+          "named": true
+        },
+        {
+          "type": "lit_string",
+          "named": true
+        },
+        {
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
@@ -2474,15 +2143,11 @@
           "named": true
         },
         {
-          "type": "expr_case",
+          "type": "expr_block",
           "named": true
         },
         {
           "type": "expr_do",
-          "named": true
-        },
-        {
-          "type": "expr_field",
           "named": true
         },
         {
@@ -2498,23 +2163,23 @@
           "named": true
         },
         {
-          "type": "expr_method",
+          "type": "expr_match",
           "named": true
         },
         {
-          "type": "expr_parens",
+          "type": "expr_path",
           "named": true
         },
         {
-          "type": "expr_record",
+          "type": "expr_pipe",
           "named": true
         },
         {
-          "type": "expr_try",
+          "type": "expr_recur",
           "named": true
         },
         {
-          "type": "expr_typed",
+          "type": "expr_return",
           "named": true
         },
         {
@@ -2522,7 +2187,11 @@
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "lit_int",
+          "named": true
+        },
+        {
+          "type": "lit_string",
           "named": true
         },
         {
@@ -2538,15 +2207,7 @@
           "named": true
         },
         {
-          "type": "pat_parens",
-          "named": true
-        },
-        {
-          "type": "pat_record",
-          "named": true
-        },
-        {
-          "type": "pat_typed",
+          "type": "pat_path",
           "named": true
         },
         {
@@ -2554,303 +2215,42 @@
           "named": true
         },
         {
-          "type": "path",
+          "type": "pat_wildcard",
           "named": true
         },
         {
-          "type": "recur",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "string_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "symbol",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "operator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ty_app",
-    "named": true,
-    "fields": {
-      "first": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "int_literal",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "ty_parens",
-            "named": true
-          },
-          {
-            "type": "ty_path",
-            "named": true
-          },
-          {
-            "type": "ty_record",
-            "named": true
-          },
-          {
-            "type": "ty_row",
-            "named": true
-          },
-          {
-            "type": "ty_unit",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ty_forall",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_forall",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
-          "named": true
-        },
-        {
-          "type": "typevar",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ty_infix",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ty_parens",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_forall",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ty_path",
-    "named": true,
-    "fields": {
-      "last": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "module_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ty_record",
+    "type": "string_content",
     "named": true,
     "fields": {},
     "children": {
@@ -2858,58 +2258,14 @@
       "required": false,
       "types": [
         {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "record_field",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_forall",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
+          "type": "escape_sequence",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "ty_row",
+    "type": "trait_item",
     "named": true,
     "fields": {},
     "children": {
@@ -2917,95 +2273,19 @@
       "required": true,
       "types": [
         {
-          "type": "int_literal",
+          "type": "attribute",
           "named": true
         },
         {
-          "type": "record_field",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_name",
           "named": true
         },
         {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ty_unit",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "ty_where",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
+          "type": "value_item",
           "named": true
         },
         {
@@ -3016,15 +2296,47 @@
     }
   },
   {
-    "type": "type",
+    "type": "type_app",
     "named": true,
     "fields": {
-      "name": {
-        "multiple": false,
+      "first": {
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "type_app",
+            "named": true
+          },
+          {
+            "type": "type_fn",
+            "named": true
+          },
+          {
+            "type": "type_infix",
+            "named": true
+          },
+          {
+            "type": "type_path",
+            "named": true
+          },
+          {
+            "type": "type_ref",
+            "named": true
+          },
+          {
+            "type": "type_unit",
+            "named": true
+          },
+          {
+            "type": "type_var",
             "named": true
           }
         ]
@@ -3032,148 +2344,225 @@
     },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_fn",
+    "named": true,
+    "fields": {
+      "return_type": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "type_app",
+            "named": true
+          },
+          {
+            "type": "type_fn",
+            "named": true
+          },
+          {
+            "type": "type_infix",
+            "named": true
+          },
+          {
+            "type": "type_path",
+            "named": true
+          },
+          {
+            "type": "type_ref",
+            "named": true
+          },
+          {
+            "type": "type_unit",
+            "named": true
+          },
+          {
+            "type": "type_var",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_infix",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "ctor",
           "named": true
         },
         {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_app",
-          "named": true
-        },
-        {
-          "type": "ty_forall",
-          "named": true
-        },
-        {
-          "type": "ty_infix",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
-          "named": true
-        },
-        {
-          "type": "ty_where",
-          "named": true
-        },
-        {
-          "type": "typevar",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "typevar",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "where_clause",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "where_kind",
-          "named": true
-        },
-        {
-          "type": "where_member",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "where_kind",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "int_literal",
+          "type": "type_app",
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "type_fn",
           "named": true
         },
         {
-          "type": "ty_app",
+          "type": "type_infix",
           "named": true
         },
         {
-          "type": "ty_infix",
+          "type": "type_name",
           "named": true
         },
         {
-          "type": "ty_parens",
+          "type": "type_path",
           "named": true
         },
         {
-          "type": "ty_path",
+          "type": "type_ref",
           "named": true
         },
         {
-          "type": "ty_record",
+          "type": "type_unit",
           "named": true
         },
         {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
+          "type": "type_var",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "where_member",
+    "type": "type_path",
     "named": true,
     "fields": {
-      "class": {
+      "last": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "ty_path",
+            "type": "type_name",
             "named": true
           }
         ]
@@ -3184,39 +2573,212 @@
       "required": false,
       "types": [
         {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "ty_parens",
-          "named": true
-        },
-        {
-          "type": "ty_path",
-          "named": true
-        },
-        {
-          "type": "ty_record",
-          "named": true
-        },
-        {
-          "type": "ty_row",
-          "named": true
-        },
-        {
-          "type": "ty_unit",
+          "type": "type_name",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "\"",
-    "named": false
+    "type": "type_ref",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_unit",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "type_var",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "value_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "constant",
+          "named": true
+        },
+        {
+          "type": "expr_app",
+          "named": true
+        },
+        {
+          "type": "expr_array",
+          "named": true
+        },
+        {
+          "type": "expr_block",
+          "named": true
+        },
+        {
+          "type": "expr_do",
+          "named": true
+        },
+        {
+          "type": "expr_if",
+          "named": true
+        },
+        {
+          "type": "expr_infix",
+          "named": true
+        },
+        {
+          "type": "expr_lambda",
+          "named": true
+        },
+        {
+          "type": "expr_match",
+          "named": true
+        },
+        {
+          "type": "expr_path",
+          "named": true
+        },
+        {
+          "type": "expr_pipe",
+          "named": true
+        },
+        {
+          "type": "expr_recur",
+          "named": true
+        },
+        {
+          "type": "expr_return",
+          "named": true
+        },
+        {
+          "type": "expr_unit",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "lit_int",
+          "named": true
+        },
+        {
+          "type": "lit_string",
+          "named": true
+        },
+        {
+          "type": "pat_identifier",
+          "named": true
+        },
+        {
+          "type": "pat_path",
+          "named": true
+        },
+        {
+          "type": "pat_unit",
+          "named": true
+        },
+        {
+          "type": "pat_wildcard",
+          "named": true
+        },
+        {
+          "type": "type_app",
+          "named": true
+        },
+        {
+          "type": "type_fn",
+          "named": true
+        },
+        {
+          "type": "type_infix",
+          "named": true
+        },
+        {
+          "type": "type_path",
+          "named": true
+        },
+        {
+          "type": "type_ref",
+          "named": true
+        },
+        {
+          "type": "type_unit",
+          "named": true
+        },
+        {
+          "type": "type_var",
+          "named": true
+        },
+        {
+          "type": "where_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "where_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "constraint",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "(",
@@ -3239,19 +2801,15 @@
     "named": false
   },
   {
-    "type": "..",
-    "named": false
-  },
-  {
-    "type": ":",
-    "named": false
-  },
-  {
     "type": "::",
     "named": false
   },
   {
     "type": "<-",
+    "named": false
+  },
+  {
+    "type": "<|",
     "named": false
   },
   {
@@ -3279,20 +2837,12 @@
     "named": false
   },
   {
-    "type": "case",
-    "named": false
-  },
-  {
-    "type": "class",
-    "named": false
-  },
-  {
     "type": "comment",
     "named": true
   },
   {
-    "type": "const",
-    "named": false
+    "type": "constant",
+    "named": true
   },
   {
     "type": "do",
@@ -3303,7 +2853,11 @@
     "named": false
   },
   {
-    "type": "empty_file",
+    "type": "escape_sequence",
+    "named": true
+  },
+  {
+    "type": "expr_recur",
     "named": true
   },
   {
@@ -3311,15 +2865,23 @@
     "named": false
   },
   {
-    "type": "forall",
-    "named": false
-  },
-  {
     "type": "foreign",
     "named": false
   },
   {
+    "type": "hiding",
+    "named": false
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
     "type": "if",
+    "named": false
+  },
+  {
+    "type": "impl",
     "named": false
   },
   {
@@ -3343,7 +2905,11 @@
     "named": false
   },
   {
-    "type": "member",
+    "type": "lit_int",
+    "named": true
+  },
+  {
+    "type": "match",
     "named": false
   },
   {
@@ -3351,15 +2917,7 @@
     "named": false
   },
   {
-    "type": "module_name",
-    "named": true
-  },
-  {
-    "type": "of",
-    "named": false
-  },
-  {
-    "type": "operator",
+    "type": "pat_wildcard",
     "named": true
   },
   {
@@ -3371,19 +2929,23 @@
     "named": false
   },
   {
-    "type": "recur",
-    "named": true
+    "type": "ref",
+    "named": false
   },
   {
-    "type": "static",
+    "type": "return",
     "named": false
+  },
+  {
+    "type": "symbol",
+    "named": true
   },
   {
     "type": "then",
     "named": false
   },
   {
-    "type": "try",
+    "type": "trait",
     "named": false
   },
   {
@@ -3391,11 +2953,15 @@
     "named": false
   },
   {
+    "type": "type_name",
+    "named": true
+  },
+  {
     "type": "where",
     "named": false
   },
   {
-    "type": "{",
+    "type": "with",
     "named": false
   },
   {
@@ -3403,7 +2969,7 @@
     "named": false
   },
   {
-    "type": "}",
+    "type": "|>",
     "named": false
   }
 ]

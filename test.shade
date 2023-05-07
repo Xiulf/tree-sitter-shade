@@ -1,7 +1,0 @@
-module Test =
-
-test = case _ of
-    a if b -> 0
-      if c -> 1
-      else -> 2
-    b      -> 3

@@ -1,84 +1,78 @@
-(func name: (identifier) @function)
-(const name: (identifier) @constant)
-(static name: (identifier) @constant)
-(type name: (identifier) @type)
-(class name: (identifier) @type)
-(ctor name: (identifier) @constructor)
-(typevar) @variable
+(module_item (module_name) @namespace)
+(import_item (module_name) @namespace)
+(value_item (identifier) @function)
+(value_item (constant) @constant)
+(type_item (type_name) @type)
+(trait_item (type_name) @type)
+(ctor (type_name) @constructor)
+(ctor (constant) @constant)
+; (typevar) @variable
 
-(import (path (identifier) @namespace))
-(module (path (identifier) @namespace))
-(export (path (identifier) @namespace))
-
-((export (identifier) @type)
-  (#match? @type "^[A-Z]"))
 (export (identifier) @function)
+(export (constant) @constant)
+(export (type_name) @type)
+(export "module" (type_name) @namespace)
 
-(((pat_identifier) @constructor)
-  (#match? @constructor "^[A-Z]"))
-(pat_identifier) @variable
-
-((import_item (identifier) @type)
-  (#match? @type "^[A-Z]"))
 (import_item (identifier) @function)
+(import_item (constant) @constant)
+(import_item (type_name) @type)
+(import_item "as" (type_name) @namespace)
+(import_item (imported_item (identifier) @function))
+(import_item (imported_item (constant) @constant))
+(import_item (imported_item (type_name) @type))
 
-((expr_infix operator: (path last: (identifier) @constructor))
-  (#match? @constructor "^[A-Z]"))
-(expr_infix operator: (path last: (identifier) @function))
+(type_path (type_name) @namespace)
+(type_path last: (type_name) @type)
+(type_infix "," @operator)
 
-(expr_app first: (expr_field (identifier) @function))
-(expr_field (identifier) @property)
-; (expr_method (identifier) @function)
+(pat_path (type_name) @namespace)
+(pat_path last: (type_name) @constructor)
 
-((expr_app first: (path last: (identifier) @constructor))
-  (#match? @constructor "^[A-Z]"))
-(expr_app first: (path last: (identifier) @function))
+(path (type_name) @namespace)
+(path last: (type_name) @constructor)
+(path last: (identifier) @function)
+(path last: (constant) @constant)
 
-((ty_path last: (identifier) @type)
-  (#match? @type "^[A-Z]"))
-(ty_path last: (identifier) @identifier)
-(ty_path (module_name) @namespace)
+(expr_path (path last: (identifier) @variable))
+(expr_app first: (expr_path (path last: (identifier) @function)))
+(expr_pipe method: (path last: (identifier) @function))
+(expr_pipe (expr_path (path last: (identifier) @function)) "<|")
+(expr_match "with" @keyword.control.conditional)
+(expr_recur) @keyword.function
 
-((path last: (identifier) @constructor)
-  (#match? @constructor "^[A-Z]"))
-(path ":" last: (identifier) @function)
-(path last: (identifier) @identifier)
-(path (module_name) @namespace)
-
-(expr_case "of" @keyword.control.conditional)
-
-(record_field (identifier) @property)
-
-"module" @keyword
-"import" @keyword.control.import
-"prefix" @keyword
+"module" @include
+"import" @include
+"hiding" @keyword
+"as" @keyword
 "infix" @keyword
 "infixl" @keyword
 "infixr" @keyword
+"prefix" @keyword
 "postfix" @keyword
-"as" @keyword
 "foreign" @keyword
 "type" @keyword
-"fn" @keyword.function
-"const" @keyword
-"static" @keyword
-"class" @keyword
-"member" @keyword
+"trait" @keyword
+"impl" @keyword
 "where" @keyword
-"forall" @keyword.control.repeat
-"of" @keyword
+"ref" @keyword
 "do" @keyword
-"try" @keyword
 "let" @keyword
+"fn" @keyword.function
 "if" @keyword.control.conditional
 "then" @keyword.control.conditional
 "else" @keyword.control.conditional
-"case" @keyword.control.conditional
-(recur) @function.builtin
+"match" @keyword.control.conditional
+"return" @keyword.control.conditional
 
-(int_literal) @constant.numeric.integer
-(string_literal) @string
-(attribute) @attribute
+"|>" @operator
+"<|" @operator
+(expr_pipe "." @operator)
+
+(lit_int) @constant.numeric.integer
+(lit_string) @string
+(escape_sequence) @escape
+
+(attribute (identifier) @attribute)
 (operator) @operator
 (symbol) @operator
 (comment) @comment

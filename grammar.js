@@ -1,659 +1,575 @@
+const OPERATOR_REGEX = /[+*&^%$#@!?<>:,./|~-]+|[=+*&^%$#@!?<>:,./|~-]{2,}/;
+const TYPE_NAME_REGEX = /\p{Lu}[_\p{XID_Continue}]*'*/;
+const CONSTANT_REGEX = /[\p{Lu}]{2}[_\p{Lu}0-9]*/;
+const IDENTIFIER_REGEX = /[_\p{Ll}][_\p{XID_Continue}]*'*/;
+
 module.exports = grammar({
-  name: "fi",
+    name: "fi",
 
-  extras: $ => [
-    /\p{Zs}/,
-    /\n/,
-    /\r/,
-    $.comment,
-  ],
-  
-  externals: $ => [
-    $._layout_semicolon,
-    $._layout_start,
-    $._layout_end,
-    $._slash,
-    $.comment,
-    /\n/,
-    $.empty_file,
-  ],
+    word: $ => $.identifier,
 
-  word: $ => $._lowercase_identifier,
-  
-  conflicts: $ => [
-    [$._pat_atom, $._expr_atom],
-    [$._pat_ident, $.path],
-    [$._pat_ident, $._typevar],
-    [$.pat_unit, $.expr_unit],
-    [$.pat_record, $.expr_record],
-    [$._pat_record_field, $._expr_record_field],
-    [$._expr_app_base, $._expr_infix2],
-  ],
+    extras: $ => [
+        $.comment,
+        /[\s\f\uFEFF\u2060\u200B]/,
+    ],
 
-  rules: {
-    source_file: $ => choice(
-      $.empty_file,
-      $.stmt_let,
-      seq($.item),
-    ),
-   
-    attribute: $ => seq(
-      '@',
-      $._attr_body,
-    ),
-    
-    _attr_body: $ => seq(
-      $.identifier,
-      optional(choice(
-        seq('=', $._literal),
-        seq('(', $._attr_value, ')'),
-      )),
-    ),
-    
-    _attr_value: $ => sepBy1(
-      ',',
-      $._attr_body,
-    ),
-
-    module: $ => seq(
-      'module',
-      field('name', $.path),
-      optional($.exports),
-      '=',
-      optional(layout($, $.item)),
-    ),
-    
-    exports: $ => seq(
-      '(',
-      sepBy(',', $.export),
-      ')',
-    ),
-    
-    export: $ => choice(
-      seq('module', $.path),
-      $.symbol,
-      seq($.identifier, optional($.export_group)),
-    ),
-    
-    export_group: $ => seq(
-      '(',
-      choice(
-        '..',
-        sepBy(',', $.identifier),
-      ),
-      ')',
-    ),
-    
-    item: $ => seq(
-      repeat($.attribute),
-      choice(
-        $.module,
-        $.import,
-        $.fixity,
-        $.type,
-        $.func,
-        $.const,
-        $.static,
-        $.class,
-        $.member,
-      ),
-    ),
-    
-    import: $ => seq(
-      'import',
-      $.path,
-      optional(seq(
-        '(',
-        sepBy(',', $.import_item),
+    externals: $ => [
+        $._newline,
+        $._indent,
+        $._dedent,
+        $._string_start,
+        $._string_content,
+        $._string_end,
+        $.comment,
+        ']',
         ')',
-      )),
-      optional(seq(
-        'as',
-        $.identifier,
-      )),
-    ),
-    
-    import_item: $ => choice(
-      $.identifier,
-      $.symbol,
-    ),
-    
-    fixity: $ => choice(
-      $._prefix,
-      $._infix,
-      $._postfix,
-    ),
-    
-    _prefix: $ => seq(
-      'prefix',
-      $.path,
-      'as',
-      $.symbol,
-    ),
-    
-    _infix: $ => seq(
-      choice('infix', 'infixl', 'infixr'),
-      $.int_literal,
-      $.path,
-      'as',
-      $.symbol,
-    ),
-    
-    _postfix: $ => seq(
-      'postfix',
-      $.path,
-      'as',
-      $.symbol,
-    ),
-    
-    type: $ => choice(
-      $._type_kind,
-      $._type_alias,
-      $._type_ctor,
-    ),
-    
-    _type_kind: $ => seq(
-      optional('foreign'),
-      'type',
-      field('name', $.identifier),
-      '::',
-      $._ty,
-    ),
-    
-    _type_alias: $ => seq(
-      'type',
-      field('name', $.identifier),
-      repeat($._typevar),
-      '=',
-      $._ty,
-    ),
-    
-    _type_ctor: $ => seq(
-      'type',
-      field('name', $.identifier),
-      repeat($._typevar),
-      '=',
-      repeat1(seq('|', $.ctor)),
-    ),
-    
-    ctor: $ => seq(
-      field('name', $.identifier),
-      repeat($._ty_atom),
-    ),
-    
-    _typevar: $ => alias($.identifier, $.typevar),
-    
-    func: $ => choice(
-      $._func_type,
-      $._func_body,
-    ),
-    
-    _func_type: $ => seq(
-      optional('foreign'),
-      field('name', $.identifier),
-      repeat($._typevar),
-      '::',
-      $._ty,
-    ),
-    
-    _func_body: $ => seq(
-      field('name', $.identifier),
-      repeat($._pat_atom),
-      $._func_value,
-    ),
-    
-    _func_value: $ => choice(
-      seq('=', alias($._expr_block, $.expr_do)),
-      seq(
-        repeat1(choice(
-          seq('if', $._expression, '=', $._expression3),
+        '}',
+    ],
+
+    conflicts: $ => [
+        [$.ctor],
+        [$.trait_item],
+        [$.impl_item],
+        [$.constraint],
+        [$.expr_match],
+        [$.pat_unit, $.expr_unit],
+        [$.pat_identifier, $.path],
+        [$.type_path, $.path],
+        // [$._pat_atom, $._expr_atom],
+        [$.type_infix, $.type_fn],
+    ],
+
+    rules: {
+        source_file: $ => repeat($._item),
+        
+        _item: $ => seq(
+            repeat($.attribute),
+            choice(
+                $.module_item,
+                $.import_item,
+                $.fixity_item,
+                $.value_item,
+                $.type_item,
+                $.trait_item,
+                $.impl_item,
+            ),
+        ),
+
+        _assoc_item: $ => seq(
+            repeat($.attribute),
+            $.value_item,
+        ),
+
+        module_item: $ => prec.right(seq(
+            'module',
+            $.module_name,
+            optional(seq(
+                '(',
+                sep($.export, ','),
+                ')',
+            )),
+            '=',
+            choice(
+                block($, $._item),
+                repeat(seq($._item, $._newline)),
+            ),
         )),
-        optional(seq('else', '=', $._expression)),
-      ),
-    ),
-    
-    const: $ => choice(
-      $._const_type,
-      $._const_body,
-    ),
-    
-    _const_type: $ => seq(
-      'const',
-      field('name', $.identifier),
-      repeat($._typevar),
-      '::',
-      $._ty,
-    ),
-    
-    _const_body: $ => seq(
-      'const',
-      field('name', $.identifier),
-      '=',
-      $._expression,
-    ),
-    
-    static: $ => choice(
-      $._static_type,
-      $._static_body,
-    ),
-    
-    _static_type: $ => seq(
-      optional('foreign'),
-      'static',
-      field('name', $.identifier),
-      repeat($._typevar),
-      '::',
-      $._ty,
-    ),
-    
-    _static_body: $ => seq(
-      'static',
-      field('name', $.identifier),
-      '=',
-      $._expression,
-    ),
-    
-    class: $ => seq(
-      'class',
-      field('name', $.identifier),
-      repeat($._typevar),
-      optional(seq(
-        '|',
-        sepBy1(',', $.fundep),
-      )),
-      optional($.where_clause),
-      optional(seq(
-        '=',
-        layout($, $.func),
-      )),
-    ),
-    
-    fundep: $ => seq(
-      repeat($.identifier),
-      '->',
-      repeat1($.identifier),
-    ),
-    
-    member: $ => seq(
-      'member',
-      repeat1($._ty_atom),
-      'of',
-      field('class', $._ty_path),
-      optional($.where_clause),
-      optional(seq(
-        '=',
-        layout($, $.func),
-      )),
-    ),
-    
-    where_clause: $ => prec.left(seq(
-      'where',
-      sepBy1(',', choice(
-        $.where_member,
-        $.where_kind,
-      )),
-    )),
-    
-    where_member: $ => seq(
-      field('class', $._ty_path),
-      repeat($._ty_atom),
-    ),
-    
-    where_kind: $ => prec(1, seq(
-      $.identifier,
-      '::',
-      choice($.ty_infix, $.ty_app, $._ty_atom),
-    )),
-    
-    _ty: $ => prec(1, choice(
-      $.ty_forall,
-      $.ty_where,
-      $.ty_infix,
-      $.ty_app,
-      $._ty_atom,
-    )),
-    
-    _ty2: $ => choice(
-      $.ty_infix,
-      $.ty_app,
-      $._ty_atom,
-    ),
-    
-    ty_forall: $ => seq(
-      'forall',
-      repeat($._typevar),
-      '.',
-      $._ty,
-    ),
-    
-    ty_where: $ => seq(
-      choice($.ty_infix, $.ty_app, $._ty_atom),
-      $.where_clause,
-    ),
-    
-    ty_app: $ => seq(field('first', $._ty_atom), repeat1($._ty_atom)),
-    
-    ty_infix: $ => prec.left(sepBy2(
-      $.operator,
-      choice($.ty_app, $._ty_atom),
-    )),
-    
-    _ty_atom: $ => choice(
-      $._ty_path,
-      $._literal,
-      $.ty_unit,
-      $.ty_parens,
-      $.ty_row,
-      $.ty_record,
-    ),
-    
-    ty_unit: _ => seq('(', ')'),
-    
-    ty_parens: $ => seq('(', $._ty, ')'),
-    
-    ty_row: $ => seq(
-      '(',
-      sepBy1(',', alias($._ty_record_field, $.record_field)),
-      optional(seq('|', $._ty2)),
-      ')',
-    ),
-    
-    ty_record: $ => seq(
-      '{',
-      sepBy(',', alias($._ty_record_field, $.record_field)),
-      optional(seq('|', $._ty)),
-      '}',
-    ),
-    
-    _ty_record_field: $ => seq($.identifier, '::', $._ty),
-    
-    _pattern: $ => choice(
-      prec(2, $.pat_infix),
-      prec(1, $._lpat),
-    ),
-    
-    _lpat: $ => choice(
-      $._pat_atom,
-      $.pat_app,
-    ),
-    
-    _nested_pat: $ => choice(
-      $._pattern,
-      $.pat_typed,
-    ),
-    
-    // _pattern: $ => choice(
-    //   $.pat_infix,
-    //   $.pat_app,
-    //   $._pat_atom,
-    // ),
 
-    pat_app: $ => seq(field('first', $._pat_ident), repeat1($._pat_atom)),
-    
-    // pat_app: $ => seq(field('first', $._pat_atom), repeat1($._pat_atom)),
+        export: $ => choice(
+            $.identifier,
+            $.constant,
+            $.type_name,
+            $.symbol,
+            seq('module', $.type_name),
+        ),
 
-    pat_infix: $ => seq($._lpat, $.operator, $._pattern),
-    
-    // pat_infix: $ => sepBy2(
-    //   $.operator,
-    //   choice($.pat_app, $._pat_atom),
-    // ),
-    
-    _pat_atom: $ => choice(
-      $._pat_ident,
-      $._literal,
-      $.pat_unit,
-      $.pat_parens,
-      $.pat_record,
-    ),
-    
-    // _pat_atom: $ => prec(1, choice(
-    //   $._pat_ident,
-    //   $._literal,
-    //   $.pat_unit,
-    //   $.pat_parens,
-    //   $.pat_record,
-    // )),
-    
-    pat_typed: $ => seq($._pattern, '::', $._ty),
-    
-    pat_unit: _ => seq('(', ')'),
-    
-    pat_parens: $ => seq('(', $._nested_pat, ')'),
-    
-    pat_record: $ => seq(
-      '{',
-      sepBy(',', alias($._pat_record_field, $.record_field)),
-      optional('..'),
-      '}',
-    ),
-    
-    _pat_record_field: $ => choice(
-      seq($.identifier, ':', $._nested_pat),
-      $.identifier,
-    ),
-    
-    _expression: $ => prec(4, choice(
-      $.expr_typed,
-      $.expr_infix,
-      $.expr_method,
-      $.expr_app,
-      $._expr_atom2,
-    )),
-    
-    _expression2: $ => prec(3, choice(
-      $.expr_infix,
-      alias($._expr_app2, $.expr_app),
-      $._expr_atom,
-    )),
-    
-    _expression3: $ => prec(3, choice(
-      alias($._expr_infix2, $.expr_infix),
-      alias($._expr_app2, $.expr_app),
-      $._expr_atom,
-    )),
-    
-    expr_typed: $ => seq($._expression2, '::', $._ty),
-    
-    expr_app: $ => prec.left(seq(field('first', $._expr_app_base), repeat($._expr_atom), $._expr_atom2)),
-    _expr_app2: $ => prec.left(seq(field('first', $._expr_app_base), repeat1($._expr_atom))),
+        import_item: $ => seq(
+            'import',
+            $.module_name,
+            optional(seq(
+                '(',
+                sep($.imported_item, ','),
+                ')',
+            )),
+            optional(seq(
+                'hiding',
+                '(',
+                sep(choice($.identifier, $.constant, $.type_name, $.symbol), ','),
+                ')',
+            )),
+            optional(seq(
+                'as',
+                $.type_name,
+            )),
+        ),
 
-    _expr_app_base: $ => choice(
-      $._expr_atom,
-      $.expr_method,
-    ),
-    
-    expr_field: $ => prec(1, seq(
-      choice($.path, $.expr_field, $.expr_parens),
-      token.immediate('.'),
-      $.identifier,
-    )),
-    
-    expr_infix: $ => prec(2, sepBy2(
-      field('operator', choice(
-        seq('`', $.path, '`'),
-        $.operator,
-      )),
-      choice($.expr_app, $._expr_atom),
-    )),
-    
-    _expr_infix2: $ => prec(2, sepBy2(
-      field('operator', choice(
-        seq('`', $.path, '`'),
-        $.operator,
-      )),
-      choice(alias($._expr_app2, $.expr_app), $._expr_atom),
-    )),
-    
-    expr_method: $ => prec(2, seq(
-      choice($.expr_app, $._expr_atom, $.expr_field, $.expr_method),
-      '.',
-      $.path
-    )),
-    
-    _expr_atom: $ => choice(
-      $._literal,
-      $.path,
-      $.recur,
-      $.expr_unit,
-      $.expr_parens,
-      $.expr_array,
-      $.expr_record,
-      $.expr_field,
-    ),
-    
-    _expr_atom2: $ => prec(1, choice(
-      $._expr_atom,
-      $.expr_do,
-      $.expr_try,
-      $.expr_lambda,
-      $.expr_if,
-      $.expr_case,
-    )),
-    
-    expr_unit: _ => seq('(', ')'),
-    
-    expr_parens: $ => seq('(', $._expression, ')'),
-    
-    expr_array: $ => seq(
-      '[',
-      sepBy(',', $._expression),
-      ']',
-    ),
-    
-    expr_record: $ => seq(
-      '{',
-      sepBy(',', alias($._expr_record_field, $.record_field)),
-      '}',
-    ),
-    
-    _expr_record_field: $ => choice(
-      seq($.identifier, '=', $._expression2),
-      $.identifier,
-    ),
-    
-    expr_do: $ => seq('do', $._expr_block),
+        imported_item: $ => seq(
+            choice($.identifier, $.constant, $.type_name, $.symbol),
+            optional(seq(
+                'as',
+                choice($.identifier, $.constant, $.type_name, $.symbol),
+            )),
+        ),
 
-    expr_try: $ => seq('try', $._try_block),
-    
-    expr_lambda: $ => seq(
-      'fn',
-      repeat1($._pat_atom),
-      '->',
-      $._expression,
-    ),
-    
-    expr_if: $ => prec.left(seq(
-      'if',
-      $._expression,
-      'then',
-      $._expression,
-      optional(seq(
-        'else',
-        $._expression,
-      )),
-    )),
-    
-    expr_case: $ => seq(
-      'case',
-      $._expression,
-      'of',
-      layout($, $.case_arm),
-    ),
-    
-    case_arm: $ => seq(
-      $._pattern,
-      $.case_value,
-    ),
-    
-    case_value: $ => choice(
-      seq('->', $._expression),
-      seq(
-        repeat1(choice(
-          seq('if', $._expression, '->', $._expression3),
+        fixity_item: $ => choice(
+            seq(
+                choice('prefix', 'postfix'),
+                $.symbol,
+                '=',
+                $.path,
+            ),
+            seq(
+                choice('infixl', 'infixr', 'infix'),
+                optional('type'),
+                $.lit_int,
+                $.symbol,
+                '=',
+                $.path,
+            ),
+        ),
+
+        value_item: $ => choice(
+            seq(
+                optional('foreign'),
+                $.identifier,
+                $._type_annotation,
+                optional($.where_clause),
+            ),
+            seq(
+                choice($.identifier, $.constant),
+                repeat($._pat_atom),
+                optional($._type_annotation),
+                optional($.where_clause),
+                '=',
+                $._expression,
+            ),
+        ),
+
+        type_item: $ => choice(
+            seq(
+                'foreign',
+                'type',
+                $.type_name,
+                $._type_annotation,
+            ),
+            seq(
+                'type',
+                $.type_name,
+                repeat($.identifier),
+                '=',
+                $._type
+            ),
+            seq(
+                'type',
+                $.type_name,
+                repeat($.identifier),
+                '=',
+                choice(
+                    block($, $.ctor),
+                    repeat1($.ctor),
+                ),
+            ),
+        ),
+
+        ctor: $ => seq(
+            '|',
+            choice($.type_name, $.constant),
+            repeat($._type_atom),
+        ),
+
+        trait_item: $ => seq(
+            'trait',
+            $.type_name,
+            repeat($.identifier),
+            optional($.where_clause),
+            optional(seq(
+                '=',
+                block($, $._assoc_item),
+            )),
+        ),
+
+        impl_item: $ => seq(
+            'impl',
+            field('trait', $.type_path),
+            repeat1($._type_atom),
+            optional($.where_clause),
+            optional(seq(
+                '=',
+                block($, $._assoc_item),
+            )),
+        ),
+
+        attribute: $ => seq(
+            '@',
+            $.identifier,
+            optional(choice(
+                seq('=', $._literal),
+                $._attr_args,
+            )),
+        ),
+
+        _attr_args: $ => seq(
+            '(',
+            sep1($._attr_arg, ','),
+            ')',
+        ),
+
+        _attr_arg: $ => choice(
+            $._literal,
+            $.identifier,
+            seq($.identifier, '=', $._literal),
+            seq($.identifier, $._attr_args),
+        ),
+
+        where_clause: $ => seq(
+            'where',
+            choice(
+                $.constraint,
+            ),
+        ),
+
+        constraint: $ => seq(
+            field('trait', $.type_path),
+            repeat($._type_atom),
+        ),
+
+        _type_annotation: $ => seq(
+            '::',
+            $._type,
+        ),
+
+        _type: $ => choice(
+            $._type_infix,
+            $.type_fn,
+        ),
+
+        _type_app: $ => prec.left(choice(
+            $._type_atom,
+            $.type_app,
         )),
-        optional(seq('else', '->', $._expression)),
-      ),
-    ),
-    
-    _expr_block: $ => layout($, $._stmt),
-    _try_block: $ => layout($, $._try_stmt),
-    
-    _stmt: $ => choice(
-      $.stmt_let,
-      $._expression
-    ),
-    
-    _try_stmt: $ => choice(
-      $.stmt_bind,
-      $.stmt_let,
-      $._expression
-    ),
-    
-    stmt_bind: $ => seq(
-      $._pattern,
-      '<-',
-      $._expression,
-    ),
-    
-    stmt_let: $ => seq(
-      'let',
-      $._nested_pat,
-      '=',
-      $._expression,
-    ),
-    
-    _literal: $ => choice(
-      $.int_literal,
-      $.string_literal,
-    ),
-    
-    int_literal: _ => choice(
-      /-?[0-9][0-9_]*/,
-      /0x[0-9a-fA-F_]+/,
-      /0b[01_]+/,
-    ),
-    
-    string_literal: _ => seq(
-      '"',
-      repeat(/[^"]/),
-      token.immediate('"'),
-    ),
 
-    _ty_path: $ => alias($.path, $.ty_path),
-    _pat_ident: $ => alias($.identifier, $.pat_identifier),
+        _type_infix: $ => prec.left(choice(
+            $._type_app,
+            $.type_infix,
+        )),
 
-    path: $ => seq(
-      repeat(seq(
-        alias($._uppercase_identifier, $.module_name),
-        token.immediate(':')
-      )),
-      field('last', $.identifier)
-    ),
-    
-    operator: _ => /[+=*&^%$#@!~/?><.,:\\|-]+/,
-    symbol: $ => seq('(', $.operator, token.immediate(')')),
-    _lowercase_identifier: _ => /[_\p{Ll}][_\p{XID_Continue}]*'*/,
-    _uppercase_identifier: _ => /\p{Lu}[_\p{XID_Continue}]*'*/,
-    identifier: $ => choice($._lowercase_identifier, $._uppercase_identifier),
-    comment: _ => token(seq(';', /.*/)),
-    
-    recur: _ => 'recur',
-  }
+        type_app: $ => prec.left(seq(
+            field('first', $._type_atom),
+            repeat1($._type_atom),
+        )),
+
+        type_infix: $ => prec.left(seq(
+            $._type_app,
+            repeat1(seq(choice(',', $.operator), $._type_app)),
+        )),
+
+        type_fn: $ => seq(
+            sep1($._type_app, ','),
+            '->',
+            field('return_type', $._type),
+        ),
+
+        _type_atom: $ => choice(
+            $._type_parens,
+            $.type_unit,
+            $.type_path,
+            $.type_var,
+            $.type_ref,
+        ),
+
+        _type_parens: $ => seq(
+            '(',
+            $._type,
+            ')',
+        ),
+
+        type_unit: $ => token(seq('(', ')')),
+        type_var: $ => $.identifier,
+
+        type_ref: $ => seq(
+            'ref',
+            $._type_app,
+        ),
+
+        _pattern: $ => choice(
+            $._pat_app,
+            $.pat_infix,
+            $._pat_typed,
+        ),
+
+        _pat_typed: $ => prec(1, seq(
+            $._pattern,
+            $._type_annotation,
+        )),
+
+        _pat_app: $ => choice(
+            $.pat_app,
+            $._pat_atom,
+        ),
+
+        pat_app: $ => prec(1, seq(
+            field('first', $._pat_path),
+            repeat1($._pat_atom),
+        )),
+
+        pat_infix: $ => prec.right(1, seq(
+            $._pat_app,
+            repeat1(seq($.operator, $._pat_app)),
+        )),
+
+        _pat_atom: $ => prec(1, choice(
+            $._literal,
+            $.pat_wildcard,
+            $.pat_identifier,
+            $.pat_unit,
+            $._pat_path,
+        )),
+
+        pat_wildcard: $ => '_',
+        pat_identifier: $ => $.identifier,
+        pat_unit: $ => token(seq('(', ')')),
+        _pat_path: $ => alias($.type_path, $.pat_path),
+
+        _expression: $ => choice(
+            $._expr_infix,
+            $.expr_pipe,
+            $._expr_typed,
+        ),
+
+        _expr_typed: $ => prec.right(1, seq(
+            $._expression,
+            $._type_annotation,
+        )),
+
+        _expr_app: $ => choice(
+            $.expr_app,
+            $._expr_atom,
+        ),
+
+        _expr_infix: $ => choice(
+            $.expr_infix,
+            $._expr_app,
+        ),
+
+        expr_app: $ => prec(1, seq(
+            field('first', $._expr_atom),
+            repeat1($._expr_atom),
+        )),
+
+        expr_infix: $ => prec.right(1, seq(
+            $._expr_app,
+            repeat1(seq($.operator, $._expr_app)),
+        )),
+
+        expr_pipe: $ => choice(
+            prec.right(1, seq(
+                $._expr_infix,
+                '<|',
+                choice(
+                    $.expr_pipe,
+                    $._expr_infix,
+                ),
+            )),
+            prec.left(1, seq(
+                choice(
+                    $.expr_pipe,
+                    $._expr_infix,
+                ),
+                choice('|>', '.'),
+                field('method', $.path),
+                repeat($._expr_atom),
+            )),
+        ),
+
+        _expr_atom: $ => choice(
+            $._literal,
+            $._expr_parens,
+            $.expr_unit,
+            $.expr_recur,
+            $.expr_path,
+            $.expr_block,
+            $.expr_do,
+            $.expr_array,
+            $.expr_lambda,
+            $.expr_if,
+            $.expr_match,
+            $.expr_return,
+        ),
+
+        _expr_parens: $ => seq(
+            '(',
+            $._expression,
+            ')',
+        ),
+
+        expr_unit: $ => token(seq('(', ')')),
+        expr_recur: $ => token('recur'),
+        expr_path: $ => $.path,
+        expr_block: $ => block($, $._statement),
+        expr_do: $ => seq('do', block($, $._statement)),
+        expr_return: $ => seq('return', $._expression),
+
+        expr_array: $ => seq(
+            '[',
+            sep($._expression, ','),
+            ']',
+        ),
+
+        expr_lambda: $ => seq(
+            'fn',
+            repeat1($._pat_atom),
+            '->',
+            $._expression,
+        ),
+
+        expr_if: $ => prec.right(seq(
+            'if',
+            $._expression,
+            optional($._newline),
+            'then',
+            $._expression,
+            optional(seq(
+                optional($._newline),
+                'else',
+                $._expression,
+            )),
+        )),
+
+        expr_match: $ => seq(
+            'match',
+            $._expression,
+            'with',
+            choice(
+                block($, $.match_arm),
+                repeat1(seq(
+                    $._newline,
+                    $.match_arm,
+                )),
+            ),
+        ),
+
+        match_arm: $ => seq(
+            '|',
+            $._pattern,
+            '->',
+            $._expression,
+        ),
+
+        _statement: $ => choice(
+            $.stmt_let,
+            $.stmt_bind,
+            $.stmt_discard,
+            $._expression,
+        ),
+
+        stmt_let: $ => seq(
+            optional('let'),
+            $._pattern,
+            '=',
+            $._expression,
+        ),
+
+        stmt_bind: $ => seq(
+            $._pattern,
+            '<-',
+            $._expression,
+        ),
+
+        stmt_discard: $ => seq(
+            '<-',
+            $._expression,
+        ),
+
+        _literal: $ => choice(
+            $.lit_int,
+            $.lit_string,
+        ),
+
+        lit_int: $ => token(choice(
+            seq(
+                '0x',
+                repeat1(/_?[0-9a-fA-F]+/),
+            ),
+            seq(
+                '0o',
+                repeat1(/_?[0-7]+/),
+            ),
+            seq(
+                '0b',
+                repeat1(/_?[01]+/),
+            ),
+            seq(
+                /[0-9]+/,
+                repeat(/_?[0-9]+/)
+            ),
+        )),
+
+        lit_string: $ => seq(
+            $._string_start,
+            repeat($.string_content),
+            $._string_end,
+        ),
+
+        string_content: $ => prec.right(0, repeat1(choice(
+            $.escape_sequence,
+            $._not_escape_sequence,
+            $._string_content,
+        ))),
+
+        escape_sequence: $ => token.immediate(prec(1, seq(
+            '\\',
+            choice(
+                /['"rnt\\0]/,
+            ),
+        ))),
+
+        _not_escape_sequence: $ => token.immediate('\\'),
+
+        module_name: $ => seq($.type_name, repeat(seq(token.immediate('.'), token.immediate(TYPE_NAME_REGEX)))),
+
+        type_path: $ => choice(
+            seq(
+                repeat1(seq($.type_name, token.immediate('.'))),
+                field('last', token.immediate(TYPE_NAME_REGEX)),
+            ),
+            field('last', $.type_name),
+        ),
+
+        path: $ => choice(
+            seq(
+                repeat1(seq($.type_name, token.immediate('.'))),
+                field('last', choice(
+                    alias(token.immediate(TYPE_NAME_REGEX), $.type_name),
+                    alias(token.immediate(IDENTIFIER_REGEX), $.identifier),
+                    alias(token.immediate(CONSTANT_REGEX), $.constant),
+                    alias(token.immediate(seq('(', token.immediate(OPERATOR_REGEX), token.immediate(')'))), $.symbol),
+                )),
+            ),
+            field('last', choice($.type_name, $.identifier, $.constant, $.symbol)),
+        ),
+
+        operator: $ => choice(
+            OPERATOR_REGEX,
+            seq('`', $.path, '`'),
+        ),
+
+        symbol: $ => token(seq('(', token.immediate(OPERATOR_REGEX), token.immediate(')'))),
+        constant: _ => CONSTANT_REGEX,
+        identifier: _ => IDENTIFIER_REGEX,
+        type_name: _ => TYPE_NAME_REGEX,
+
+        comment: _ => token(seq('//', /.*/)),
+    },
 });
 
-function sepBy2(sep, rule) {
-  return seq(rule, repeat1(seq(sep, rule)), optional(sep));
+function block($, item) {
+    return seq($._indent, repeat(seq(item, $._newline)), $._dedent);
 }
 
-function sepBy1(sep, rule) {
-  return seq(rule, repeat(seq(sep, rule)), optional(sep));
+function sep(rule, separator) {
+    return optional(seq(rule, repeat(seq(separator, rule)), optional(separator)));
 }
 
-function sepBy(sep, rule) {
-  return optional(sepBy1(sep, rule));
-}
-
-function layout($, rule) {
-  return seq($._layout_start, sepBy($._layout_semicolon, rule), $._layout_end);
+function sep1(rule, separator) {
+    return seq(rule, repeat(seq(separator, rule)));
 }
